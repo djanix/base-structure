@@ -11,7 +11,7 @@ base-structure
 
 grunt
 -------------------------
-__using grunt to:__
+### using grunt to:
   - compile less files
   - minify css
   - jshint
@@ -19,29 +19,29 @@ __using grunt to:__
   - watch js/css files and recompile on the fly
 
 
-__how to use grunt:__
+### how to use grunt:
 
-move to your app folder
+#### move to your app folder
 
     cd path/to/project/folder
 
-install dependencies
+#### install dependencies
 
     npm install --save-dev
 
-run grunt
+#### run grunt
 
     grunt
 
 
-__more info on grunt:__
+### more info on grunt:
   - http://gruntjs.com/getting-started
 
 
 
 bower
 -------------------------
-__using bower to install js plugins/dependencies__
+### using bower to install js plugins/dependencies
 
     bower install [plugin name]
 
