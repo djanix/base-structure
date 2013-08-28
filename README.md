@@ -21,13 +21,13 @@ using grunt to:
 
 how to use grunt:
   - move to your app folder
-        cd path/to/project/folder
+    cd path/to/project/folder
 
   - install dependencies
-        npm install --save-dev
+    npm install --save-dev
 
   - run grunt
-        grunt
+    grunt
 
 
 more info on grunt:
@@ -38,7 +38,7 @@ more info on grunt:
 bower
 -------------------------
 using bower to install js plugins/dependencies
-        bower install [plugin name]
+    bower install [plugin name]
 
 
 
@@ -49,4 +49,4 @@ using data-view="ViewName" in the html will load the right js (js/src/views/View
 every views will extend View.js
 
 you can create models and then call them in a view this way:
-        var ModelTest = new $.ModelTest();
+    var ModelTest = new $.ModelTest();
