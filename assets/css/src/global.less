@@ -1,0 +1,84 @@
+#site {
+	/* ==========================================================================
+	   Base styles
+	   ========================================================================== */
+	* {
+		box-sizing: border-box;
+	}
+
+	button,
+	input,
+	select,
+	textarea {
+		color: #fff;
+	}
+
+	::-moz-selection {
+		background: #b3d4fc;
+		text-shadow: none;
+	}
+
+	::selection {
+		background: #b3d4fc;
+		text-shadow: none;
+	}
+
+	a {
+		color: #fff;
+		text-decoration: none;
+	}
+
+	hr {
+		border: 0;
+		border-top: 1px solid #ccc;
+		display: block;
+		height: 1px;
+		margin: 1em 0;
+		padding: 0;
+	}
+
+	img {
+		vertical-align: middle;
+	}
+
+	fieldset {
+		border: 0;
+		margin: 0;
+		padding: 0;
+	}
+
+	textarea {
+		resize: vertical;
+	}
+
+	/* ==========================================================================
+	   Sprite
+	   ========================================================================== */
+	.sprite {
+		background: url(/assets/img/sprite.png) 0 0 no-repeat;
+		height: 32px;
+		overflow: hidden;
+		vertical-align: middle;
+		width: 32px;
+
+		display: inline-block;
+		*display: inline;
+		zoom: 1;
+
+		&.icon-question { background-position: 0 0; }
+		&.icon-versus { background-position: -32px 0; }
+		&.icon-close { background-position: -64px 0; }
+		&.icon-twitter { background-position: -96px 0; }
+		&.icon-twitter-big { background-position: -128px 0; }
+
+		&.icon-down-arrow { background-position: 0 -32px; }
+		&.icon-next-arrow { background-position: -32px -32px; }
+		&.icon-next-arrow-dark { background-position: -64px -32px; }
+		&.icon-bullet-selected { background-position: -96px -32px; }
+		&.icon-bullet { background-position: -128px -32px; }
+	}
+
+	/* ==========================================================================
+	   Custom styles
+	   ========================================================================== */
+}
