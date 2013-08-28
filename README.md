@@ -1,7 +1,7 @@
 base-structure
 ================================
 
-website base structure using 
+__website base structure using__
   - grunt
   - bower
   - less
@@ -11,7 +11,7 @@ website base structure using
 
 grunt
 -------------------------
-using grunt to:
+__using grunt to:__
   - compile less files
   - minify css
   - jshint
@@ -19,7 +19,7 @@ using grunt to:
   - watch js/css files and recompile on the fly
 
 
-how to use grunt:
+__how to use grunt:__
 
 move to your app folder
 
@@ -34,14 +34,14 @@ run grunt
     grunt
 
 
-more info on grunt:
+__more info on grunt:__
   - http://gruntjs.com/getting-started
 
 
 
 bower
 -------------------------
-using bower to install js plugins/dependencies
+__using bower to install js plugins/dependencies__
 
     bower install [plugin name]
 
