@@ -21,12 +21,15 @@ using grunt to:
 
 how to use grunt:
   - move to your app folder
+
     cd path/to/project/folder
 
   - install dependencies
+
     npm install --save-dev
 
   - run grunt
+
     grunt
 
 
@@ -38,6 +41,7 @@ more info on grunt:
 bower
 -------------------------
 using bower to install js plugins/dependencies
+
     bower install [plugin name]
 
 
