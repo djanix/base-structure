@@ -1,7 +1,7 @@
 base-structure
 ================================
 
-__website base structure using__
+### website base structure using
   - grunt
   - bower
   - less
