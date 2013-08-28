@@ -1,5 +1,5 @@
 base-structure
-==============
+================================
 
 website base structure using 
   - grunt
@@ -10,7 +10,7 @@ website base structure using
 
 
 grunt
-==============
+-------------------------
 using grunt to:
   - compile less files
   - minify css
@@ -19,25 +19,32 @@ using grunt to:
   - watch js/css files and recompile on the fly
   
 how to use grunt:
-  move to your app folder --> cd path/to/project/folder
-  install dependencies --> npm install --save-dev
-  run grunt --> grunt
+  - move to your app folder
+    cd path/to/project/folder
+
+  - install dependencies
+    npm install --save-dev
+
+  - run grunt
+    grunt
 
 more info on grunt:
-  http://gruntjs.com/getting-started
+  - http://gruntjs.com/getting-started
   
 
 
 bower
-==============
-using bower to install js plugins/dependencies --> bower install [plugin name]
+-------------------------
+using bower to install js plugins/dependencies
+    bower install [plugin name]
 
 
 
 requirejs
-==============
+-------------------------
 using data-view="ViewName" in the html will load the right js (js/src/views/View[ViewName].js)
+
 every views will extend View.js
 
 you can create models and then call them in a view this way:
-  var ModelTest = new $.ModelTest();
+    var ModelTest = new $.ModelTest();
