@@ -3,10 +3,10 @@ var App;
 (function(){
 	requirejs.config({
 		paths: {
-			'jquery': 'vendor/jquery/jquery.min',
-			'mootools': 'vendor/mootools-core-1.4.5',
-			'class.mutators': 'vendor/Class.Mutators.jQuery',
-			'underscore': 'vendor/underscore/underscore-min'
+			'jquery': './vendor/jquery/jquery.min',
+			'mootools': './vendor/mootools-core-1.4.5',
+			'class.mutators': './vendor/Class.Mutators.jQuery',
+			'underscore': './vendor/underscore/underscore-min'
 		},
 		shim: {
             'src/App': {},
@@ -21,7 +21,7 @@ var App;
 	});
 
 	requirejs([
-		'src/App'
+		'./src/App'
 	], function(){
 		$(function(){
 			App = new $.App($('#site'));

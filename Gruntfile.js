@@ -1,9 +1,9 @@
 module.exports = function(grunt) {
 	var config = {
-		jsSrc: 'assets/js/src',
-		jsDest: 'assets/js/dest',
-		cssSrc: 'assets/css/src',
-		cssDest: 'assets/css/dest'
+		jsSrc: 'app/assets/js/src',
+		jsDest: 'app/assets/js/dest',
+		cssSrc: 'app/assets/css/src',
+		cssDest: 'app/assets/css/dest'
 	};
 
 	grunt.initConfig({
@@ -18,7 +18,7 @@ module.exports = function(grunt) {
 					browsers: ['last 2 version', '> 1%', 'ie 8']
 				},
 				files: {
-					'assets/css/dest/main.css': ['<%= config.cssDest %>/main.css']
+					'app/assets/css/dest/main.css': ['<%= config.cssDest %>/main.css']
 				}
 			}
 		},
