@@ -20,15 +20,16 @@ using grunt to:
 
 
 how to use grunt:
-  - move to your app folder
+
+move to your app folder
 
     cd path/to/project/folder
 
-  - install dependencies
+install dependencies
 
     npm install --save-dev
 
-  - run grunt
+run grunt
 
     grunt
 
@@ -53,4 +54,5 @@ using data-view="ViewName" in the html will load the right js (js/src/views/View
 every views will extend View.js
 
 you can create models and then call them in a view this way:
+
     var ModelTest = new $.ModelTest();
