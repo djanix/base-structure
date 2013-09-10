@@ -1,6 +1,6 @@
 define([
 
-], function() {
+], function () {
 	var className = 'Model';
 
 	$[className] = new Class({

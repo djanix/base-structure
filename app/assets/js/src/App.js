@@ -1,54 +1,55 @@
 define([
 	'jquery',
-    'mootools',
-    'class.mutators',
+	'mootools',
+	'class.mutators',
 	'underscore',
-    'src/views/View'
+	'src/views/View'
 ], function () {
-    var className = 'App';
+	var className = 'App';
 
-    $[className] = new Class({
-        jQuery: className,
-        Implements: [Options, Events],
-        options: {},
+	$[className] = new Class({
+		jQuery: className,
+		Implements: [Options, Events],
+		options: {},
 
-        //-- init
-        //---------------------------------------------
-        initialize: function (el, options) {
-            el = $(el);
-            var self = this;
-            self.setOptions(options); // inherited from Options like jQuery.extend();
-            self.el = el; // cache the jQuery object
+		//-- init
+		//---------------------------------------------
+		initialize: function (el, options) {
+			el = $(el);
+			var self = this;
+			self.setOptions(options); // inherited from Options like jQuery.extend();
+			self.el = el; // cache the jQuery object
 
-            self.init();
-        },
+			self.init();
+		},
 
-        //-- Vars
-        //--------------------------------------------------------------
-        view: null,
-        viewName: 'View',
+		//-- Vars
+		//--------------------------------------------------------------
+		view: null,
+		viewName: 'View',
 
 
-        //-- Init
-        //--------------------------------------------------------------
-        init: function () {
-            var self = this;
+		//-- Init
+		//--------------------------------------------------------------
+		init: function () {
+			var self = this;
+			var dataView = self.el.attr('data-view');
 
-            var dataView = self.el.attr('data-view');
-            if(dataView)
-                self.viewName = 'View' + dataView;
+			if (dataView) {
+				self.viewName = 'View' + dataView;
+			}
 
 			self.oldBrowserConsole();
-            self.loadViewJs();
-        },
+			self.loadViewJs();
+		},
 
-        loadViewJs: function () {
-            var self = this;
+		loadViewJs: function () {
+			var self = this;
 
-            require(['src/views/' + self.viewName ], function () {
-                self.view = new $[self.viewName](self.el);
-            });
-        },
+			require(['src/views/' + self.viewName ], function () {
+				self.view = new $[self.viewName](self.el);
+			});
+		},
 
 		oldBrowserConsole: function () {
 			// Avoid `console` errors in browsers that lack a console.
@@ -73,8 +74,8 @@ define([
 			}
 		},
 
-        empty: null
-    });
+		empty: null
+	});
 
 	return $[className];
 });

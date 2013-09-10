@@ -1,6 +1,6 @@
 define([
 	'src/models/Model'
-], function() {
+], function () {
 	var className = 'ModelTest';
 
 	$[className] = new Class({
@@ -13,7 +13,6 @@ define([
 		initialize: function (el, options) {
 			el = $(el);
 			var self = this;
-
 			self.parent(el, options);
 		},
 
@@ -27,7 +26,6 @@ define([
 		},
 
 		empty: null
-
 	});
 
 	return $[className];

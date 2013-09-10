@@ -1,6 +1,6 @@
 var App;
 
-(function(){
+(function () {
 	requirejs.config({
 		paths: {
 			'jquery': './vendor/jquery/jquery.min',
@@ -9,7 +9,7 @@ var App;
 			'underscore': './vendor/underscore/underscore-min'
 		},
 		shim: {
-            'src/App': {},
+			'src/App': {},
 			'class.mutators': {
 				deps: [
 					'mootools'
@@ -22,8 +22,8 @@ var App;
 
 	requirejs([
 		'./src/App'
-	], function(){
-		$(function(){
+	], function () {
+		$(function () {
 			App = new $.App($('#site'));
 		});
 	});
