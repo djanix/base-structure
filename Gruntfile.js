@@ -13,13 +13,12 @@ module.exports = function(grunt) {
 			'<%= pkg.homepage ? "* " + pkg.homepage + "\\n" : "" %>' +
 			'* Copyright (c) <%= grunt.template.today("yyyy-mm-dd") %> <%= pkg.author.name %> - <%= pkg.author.url %> */\n\n',
 		autoprefixer: {
-			dist: {
+			single_file: {
 				options: {
-					browsers: ['last 2 version', '> 1%', 'ie 8']
+					browsers: ['last 3 version', '> 1%', 'ie 8']
 				},
-				files: {
-					'app/assets/css/dest/main.css': ['<%= config.cssDest %>/main.css']
-				}
+				src: '<%= config.cssDest %>/main.css',
+				dest: '<%= config.cssDest %>/main.css'
 			}
 		},
 		cssmin: {
@@ -32,14 +31,14 @@ module.exports = function(grunt) {
 			}
 		},
 		jshint: {
-			files: ['<%= config.jsSrc %>/*.js', '<%= config.jsSrc %>/**/*.js'],
+			files: ['<%= config.jsSrc %>/**/*.js'],
 			options: {
 				force: true
 			}
 		},
 		less: {
 			options: {
-				yuicompress: true
+				cleancss: true
 			},
 			files: {
 				src: "<%= config.cssSrc %>/main.less",
@@ -48,11 +47,11 @@ module.exports = function(grunt) {
 		},
 		watch: {
 			js: {
-				files: ['<%= config.jsSrc %>/*.js', '<%= config.jsSrc %>/**/*.js'],
+				files: ['<%= config.jsSrc %>/**/*.js'],
 				tasks: ['jshint']
 			},
 			less: {
-				files: ["<%= config.cssSrc %>/*.less", "<%= config.cssSrc %>/**/*.less"],
+				files: ["<%= config.cssSrc %>/**/*.less"],
 				tasks: ['less', 'autoprefixer', 'cssmin']
 			}
 		}
