@@ -1,8 +1,8 @@
 define([
 	'src/views/View',
-	'src/models/Model',
-	'src/models/ModelTest'
-], function () {
+	'src/modules/ModuleTest',
+	'hbs!/partials/test',
+], function (View, ModuleTest, tmplTest) {
 	var className = 'ViewHome';
 
 	$[className] = new Class({
@@ -29,8 +29,17 @@ define([
 
 			self.parent();
 
-			var ModelTest = new $.ModelTest();
-			ModelTest.test();
+//			Load Module
+//			You can also call it automatically by adding the attribute data-module="Test" in your html
+			var ModuleTest = new $.ModuleTest();
+			ModuleTest.test();
+
+			self.el.find('.templateDiv').append(tmplTest({
+				sentenceA: '<p>this is a test</p>',
+				sentenceB: {
+					wordA: 'Word'
+				}
+			}));
 
 			self.bindEventsHook();
 		},

@@ -22,3 +22,7 @@ atlassian-ide-plugin.xml
 ## NPM modules
 ############
 node_modules/
+
+
+.sass-cache
+app/assets/js/vendor/

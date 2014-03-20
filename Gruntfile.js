@@ -36,13 +36,12 @@ module.exports = function(grunt) {
 				force: true
 			}
 		},
-		less: {
-			options: {
-				cleancss: true
-			},
-			files: {
-				src: "<%= config.cssSrc %>/main.less",
-				dest: "<%= config.cssDest %>/main.css"
+		sass: {
+			dist: {
+				files: [{
+					src: '<%= config.cssSrc %>/main.scss',
+					dest: '<%= config.cssDest %>/main.css'
+				}]
 			}
 		},
 		watch: {
@@ -60,8 +59,8 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-autoprefixer');
 	grunt.loadNpmTasks('grunt-contrib-cssmin');
 	grunt.loadNpmTasks('grunt-contrib-jshint');
-	grunt.loadNpmTasks('grunt-contrib-less');
+	grunt.loadNpmTasks('grunt-contrib-sass');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 
-	grunt.registerTask('default', ['jshint', 'less', 'autoprefixer', 'cssmin', 'watch']);
+	grunt.registerTask('default', ['jshint', 'sass', 'autoprefixer', 'cssmin', 'watch']);
 };
