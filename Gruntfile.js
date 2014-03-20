@@ -49,9 +49,9 @@ module.exports = function(grunt) {
 				files: ['<%= config.jsSrc %>/**/*.js'],
 				tasks: ['jshint']
 			},
-			less: {
-				files: ["<%= config.cssSrc %>/**/*.less"],
-				tasks: ['less', 'autoprefixer', 'cssmin']
+			sass: {
+				files: ["<%= config.cssSrc %>/**/*.scss"],
+				tasks: ['sass', 'autoprefixer', 'cssmin']
 			}
 		}
 	});
