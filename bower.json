@@ -2,9 +2,10 @@
   "name": "project-name",
   "version": "0.0.1",
   "dependencies": {
-	"jquery": "1.11.0",
+    "jquery": "1.11.0",
     "modernizr": "~2.6.2",
-	"underscore": "~1.5.2",
-	"require-handlebars-plugin": "~0.7.0"
+    "underscore": "~1.5.2",
+    "require-handlebars-plugin": "~0.7.0",
+    "requirejs": "~2.1.11"
   }
 }
