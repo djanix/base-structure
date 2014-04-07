@@ -1,8 +1,9 @@
 define([
 	'src/views/View',
 	'src/modules/ModuleTest',
-	'hbs!/partials/test',
+	'hbs!/partials/test'
 ], function (View, ModuleTest, tmplTest) {
+	"use strict";
 	var className = 'ViewHome';
 
 	$[className] = new Class({

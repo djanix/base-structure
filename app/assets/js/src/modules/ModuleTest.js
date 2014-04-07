@@ -1,6 +1,7 @@
 define([
 	'src/modules/Module'
 ], function () {
+	"use strict";
 	var className = 'ModuleTest';
 
 	$[className] = new Class({

@@ -4,6 +4,7 @@ define([
 	'class.mutators',
 	'underscore'
 ], function () {
+	"use strict";
 	var className = 'View';
 
 	$[className] = new Class({

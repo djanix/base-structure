@@ -5,6 +5,7 @@ define([
 	'src/views/View',
 	'src/modules/Module'
 ], function () {
+	"use strict";
 	var className = 'App';
 
 	$[className] = new Class({

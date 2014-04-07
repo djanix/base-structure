@@ -23,5 +23,10 @@ atlassian-ide-plugin.xml
 ############
 node_modules/
 
-
+############
+## SASS CACHE FOLDER
+############
 .sass-cache
+
+app/assets/css/dest/main.css
+app/assets/js/vendor/*/

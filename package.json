@@ -8,11 +8,11 @@
     "url": "http://janicbeauchemin.com"
   },
   "devDependencies": {
-    "grunt": "~0.4.1",
-    "grunt-contrib-watch": "~0.5.3",
-    "grunt-contrib-jshint": "~0.7.1",
-    "grunt-autoprefixer": "~0.4.1",
-    "grunt-contrib-cssmin": "~0.7.0",
-    "grunt-contrib-sass": "~0.7.2"
+    "grunt": "^0.4.4",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-contrib-jshint": "^0.10.0",
+    "grunt-autoprefixer": "^0.7.2",
+    "grunt-contrib-cssmin": "^0.9.0",
+    "grunt-contrib-sass": "^0.7.3"
   }
 }

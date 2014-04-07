@@ -63,4 +63,5 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-watch');
 
 	grunt.registerTask('default', ['jshint', 'sass', 'autoprefixer', 'cssmin', 'watch']);
+	grunt.registerTask('build', ['jshint', 'sass', 'autoprefixer', 'cssmin']);
 };

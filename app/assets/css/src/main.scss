@@ -6,4 +6,9 @@
 
 //main
 @import "global.scss";
-@import "home.scss";
+
+//views
+@import "views/home.scss";
+
+//modules
+@import "modules/test.scss";
