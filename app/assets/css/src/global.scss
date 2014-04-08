@@ -1,7 +1,9 @@
 /* ==========================================================================
    Base styles
    ========================================================================== */
-* {
+*,
+*:after,
+*:before {
 	box-sizing: border-box;
 }
 
@@ -51,6 +53,31 @@ fieldset {
 
 textarea {
 	resize: vertical;
+}
+
+body:after {
+	content: 'desktop';
+	height: 0;
+	left: -9999px;
+	line-height: 0;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	text-indent: -9999px;
+	top: -9999px;
+	width: 0;
+}
+
+@media only screen and (max-width: $tablet) {
+	body:after {
+		content: 'tablet';
+	}
+}
+
+@media only screen and (max-width: $mobile) {
+	body:after {
+		content: 'mobile';
+	}
 }
 
 #site {

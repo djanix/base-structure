@@ -1,1 +1,9 @@
 $color: #ababab;
+
+$tablet: 1024px;
+$mobile: 540px;
+
+//usage: @include calc(width, "100% - 40px");
+@mixin calc($property, $expression) {
+	#{$property}: calc(#{$expression});
+}

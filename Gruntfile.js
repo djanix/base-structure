@@ -1,5 +1,6 @@
 module.exports = function(grunt) {
 	var config = {
+		basePath: 'app',
 		jsSrc: 'app/assets/js/src',
 		jsDest: 'app/assets/js/dest',
 		cssSrc: 'app/assets/css/src',
@@ -36,6 +37,19 @@ module.exports = function(grunt) {
 				force: true
 			}
 		},
+		replace: {
+			cache_break: {
+				src: ['<%= config.basePath %>/index.html'],
+				overwrite: true,
+				replacements: [{
+					from: /cacheBreak: \".*\"/g,
+					to: 'cacheBreak: "<%= ((new Date()).valueOf().toString()) + (Math.floor((Math.random()*1000000)+1).toString()) %>"'
+				}, {
+					from: /\.css.*/g,
+					to: '.css?v=<%= ((new Date()).valueOf().toString()) + (Math.floor((Math.random()*1000000)+1).toString()) %>"/>'
+				}]
+			}
+		},
 		sass: {
 			dist: {
 				files: [{
@@ -61,7 +75,8 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-jshint');
 	grunt.loadNpmTasks('grunt-contrib-sass');
 	grunt.loadNpmTasks('grunt-contrib-watch');
+	grunt.loadNpmTasks('grunt-text-replace');
 
-	grunt.registerTask('default', ['jshint', 'sass', 'autoprefixer', 'cssmin', 'watch']);
-	grunt.registerTask('build', ['jshint', 'sass', 'autoprefixer', 'cssmin']);
+	grunt.registerTask('default', ['jshint', 'sass', 'autoprefixer', 'cssmin', 'replace', 'watch']);
+	grunt.registerTask('build', ['jshint', 'sass', 'autoprefixer', 'cssmin', 'replace']);
 };

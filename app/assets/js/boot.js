@@ -27,6 +27,8 @@ var App;
 				exports : '_'
 			}
 		},
+
+		urlArgs: "v=" + window.config.cacheBreak,
 		waitSeconds: 15
 	});
 
