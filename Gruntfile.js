@@ -22,11 +22,11 @@ module.exports = function(grunt) {
 				dest: '<%= config.cssDest %>/main.css'
 			}
 		},
-		cssmin: {
-			options: {
-				banner: '<%= banner %>'
-			},
-			files: {
+		csswring: {
+			min: {
+				options: {
+					map: true
+				},
 				src: '<%= config.cssDest %>/main.css',
 				dest: '<%= config.cssDest %>/main.css'
 			}
@@ -51,6 +51,9 @@ module.exports = function(grunt) {
 			}
 		},
 		sass: {
+			options: {
+				sourcemap: true
+			},
 			dist: {
 				files: [{
 					src: '<%= config.cssSrc %>/main.scss',
@@ -71,12 +74,12 @@ module.exports = function(grunt) {
 	});
 
 	grunt.loadNpmTasks('grunt-autoprefixer');
-	grunt.loadNpmTasks('grunt-contrib-cssmin');
 	grunt.loadNpmTasks('grunt-contrib-jshint');
 	grunt.loadNpmTasks('grunt-contrib-sass');
 	grunt.loadNpmTasks('grunt-contrib-watch');
+	grunt.loadNpmTasks('grunt-csswring');
 	grunt.loadNpmTasks('grunt-text-replace');
 
-	grunt.registerTask('default', ['jshint', 'sass', 'autoprefixer', 'cssmin', 'replace', 'watch']);
-	grunt.registerTask('build', ['jshint', 'sass', 'autoprefixer', 'cssmin', 'replace']);
+	grunt.registerTask('default', ['jshint', 'sass', 'autoprefixer', 'csswring', 'replace', 'watch']);
+	grunt.registerTask('build', ['jshint', 'sass', 'autoprefixer', 'csswring', 'replace']);
 };
