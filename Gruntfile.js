@@ -77,6 +77,8 @@ module.exports = function(grunt) {
 		}
 	});
 
-	grunt.registerTask('default', ['jshint', 'sass', 'autoprefixer', 'csswring', 'replace', 'watch']);
-	grunt.registerTask('build', ['jshint', 'sass', 'autoprefixer', 'csswring', 'replace']);
+	grunt.registerTask('default', ['jshint', 'build:css', 'replace', 'watch']);
+
+	grunt.registerTask('build', ['jshint', 'build:css', 'replace']);
+	grunt.registerTask('build:css', ['sass', 'autoprefixer', 'csswring']);
 };
