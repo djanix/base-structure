@@ -1,4 +1,8 @@
 module.exports = function(grunt) {
+	require('matchdep').filterDev('grunt-*').forEach(
+		grunt.loadNpmTasks
+	);
+
 	var config = {
 		basePath: 'app',
 		jsSrc: 'app/assets/js/src',
@@ -72,13 +76,6 @@ module.exports = function(grunt) {
 			}
 		}
 	});
-
-	grunt.loadNpmTasks('grunt-autoprefixer');
-	grunt.loadNpmTasks('grunt-contrib-jshint');
-	grunt.loadNpmTasks('grunt-contrib-sass');
-	grunt.loadNpmTasks('grunt-contrib-watch');
-	grunt.loadNpmTasks('grunt-csswring');
-	grunt.loadNpmTasks('grunt-text-replace');
 
 	grunt.registerTask('default', ['jshint', 'sass', 'autoprefixer', 'csswring', 'replace', 'watch']);
 	grunt.registerTask('build', ['jshint', 'sass', 'autoprefixer', 'csswring', 'replace']);
