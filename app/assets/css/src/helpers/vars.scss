@@ -7,3 +7,8 @@ $mobile: 540px;
 @mixin calc($property, $expression) {
 	#{$property}: calc(#{$expression});
 }
+
+//usage: @include filter(grayscale, 100%);
+@mixin filter($filter-type, $filter-amount) {
+	filter: $filter-type+unquote('(#{$filter-amount})');
+}

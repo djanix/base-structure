@@ -7,8 +7,6 @@ This is a frontend boilerplate to start a web project, using sass, requirejs, mo
   - nodejs
   -  -> grunt
   -  -> bower (on windows you'll need to install git)
-  - ruby
-  -  -> sass
 
 ### How to start
 

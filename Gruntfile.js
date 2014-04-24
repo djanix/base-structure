@@ -73,6 +73,9 @@ module.exports = function(grunt) {
 			sass: {
 				files: ["<%= config.cssSrc %>/**/*.scss"],
 				tasks: ['sass', 'autoprefixer', 'csswring']
+			},
+			options: {
+				spawn: true
 			}
 		}
 	});
