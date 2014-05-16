@@ -1,15 +1,15 @@
 [data-module="Test"] {
-	/* test module styles */
+    /* test module styles */
 }
 
 @media only screen and (max-width: $tablet) {
-	[data-module="Test"] {
-		/* test module tablet styles */
-	}
+    [data-module="Test"] {
+        /* test module tablet styles */
+    }
 }
 
 @media only screen and (max-width: $mobile) {
-	[data-module="Test"] {
-		/* test module mobile styles */
-	}
+    [data-module="Test"] {
+        /* test module mobile styles */
+    }
 }

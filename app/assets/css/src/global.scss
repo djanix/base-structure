@@ -4,7 +4,7 @@
 *,
 *:after,
 *:before {
-	box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 html,
@@ -12,104 +12,104 @@ button,
 input,
 select,
 textarea {
-	color: #222;
+    color: #222;
 }
 
 html {
-	font-size: 1em;
-	line-height: 1.4;
+    font-size: 1em;
+    line-height: 1.4;
 }
 
 ::-moz-selection {
-	background: #b3d4fc;
-	text-shadow: none;
+    background: #b3d4fc;
+    text-shadow: none;
 }
 
 ::selection {
-	background: #b3d4fc;
-	text-shadow: none;
+    background: #b3d4fc;
+    text-shadow: none;
 }
+
 hr {
-	display: block;
-	height: 1px;
-	border: 0;
-	border-top: 1px solid #ccc;
-	margin: 1em 0;
-	padding: 0;
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
 }
 
 audio,
 canvas,
 img,
 video {
-	vertical-align: middle;
+    vertical-align: middle;
 }
 
 fieldset {
-	border: 0;
-	margin: 0;
-	padding: 0;
+    border: 0;
+    margin: 0;
+    padding: 0;
 }
 
 textarea {
-	resize: vertical;
+    resize: vertical;
 }
 
 body:after {
-	content: 'desktop';
-	height: 0;
-	left: -9999px;
-	line-height: 0;
-	opacity: 0;
-	overflow: hidden;
-	position: absolute;
-	text-indent: -9999px;
-	top: -9999px;
-	width: 0;
+    content: 'desktop';
+    height: 0;
+    left: -9999px;
+    line-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    text-indent: -9999px;
+    top: -9999px;
+    width: 0;
 }
 
 @media only screen and (max-width: $tablet) {
-	body:after {
-		content: 'tablet';
-	}
+    body:after {
+        content: 'tablet';
+    }
 }
 
 @media only screen and (max-width: $mobile) {
-	body:after {
-		content: 'mobile';
-	}
+    body:after {
+        content: 'mobile';
+    }
 }
 
 #site {
-	/* ==========================================================================
-	   Sprite
-	   ========================================================================== */
-	.sprite {
-		background: url(/assets/img/sprite.png) 0 0 no-repeat;
-		height: 32px;
-		overflow: hidden;
-		vertical-align: middle;
-		width: 32px;
+    /* ==========================================================================
+       Sprite
+       ========================================================================== */
+    .sprite {
+        background: url(/assets/img/sprite.png) 0 0 no-repeat;
+        height: 32px;
+        overflow: hidden;
+        vertical-align: middle;
+        width: 32px;
 
-		display: inline-block;
-		*display: inline;
-		zoom: 1;
+        display: inline-block;
+        *display: inline;
+        zoom: 1;
 
-		&.icon-question { background-position: 0 0; }
-		&.icon-versus { background-position: -32px 0; }
-		&.icon-close { background-position: -64px 0; }
-		&.icon-twitter { background-position: -96px 0; }
-		&.icon-twitter-big { background-position: -128px 0; }
+        &.icon-question { background-position: 0 0; }
+        &.icon-versus { background-position: -32px 0; }
+        &.icon-close { background-position: -64px 0; }
+        &.icon-twitter { background-position: -96px 0; }
+        &.icon-twitter-big { background-position: -128px 0; }
 
-		&.icon-down-arrow { background-position: 0 -32px; }
-		&.icon-next-arrow { background-position: -32px -32px; }
-		&.icon-next-arrow-dark { background-position: -64px -32px; }
-		&.icon-bullet-selected { background-position: -96px -32px; }
-		&.icon-bullet { background-position: -128px -32px; }
+        &.icon-down-arrow { background-position: 0 -32px; }
+        &.icon-next-arrow { background-position: -32px -32px; }
+        &.icon-next-arrow-dark { background-position: -64px -32px; }
+        &.icon-bullet-selected { background-position: -96px -32px; }
+        &.icon-bullet { background-position: -128px -32px; }
 	}
 
-	/* ==========================================================================
-	   Custom styles
-	   ========================================================================== */
-	
+    /* ==========================================================================
+       Custom styles
+       ========================================================================== */
 }

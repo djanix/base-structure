@@ -29,4 +29,4 @@ node_modules/
 .sass-cache
 
 app/assets/css/dest/main.css
-app/assets/js/vendor/*/
+app/assets/js/libs/*/

@@ -1,150 +1,150 @@
 define([
-	'mootools',
-	'class.mutators',
-	'underscore',
-	'src/views/View',
-	'src/modules/Module'
+    'mootools',
+    'class.mutators',
+    'underscore',
+    'src/views/View',
+    'src/modules/Module'
 ], function () {
-	"use strict";
-	var className = 'App';
+    "use strict";
+    var className = 'App';
 
-	$[className] = new Class({
-		jQuery: className,
-		Implements: [Options, Events],
-		options: {},
+    $[className] = new Class({
+        jQuery: className,
+        Implements: [Options, Events],
+        options: {},
 
-		//-- init
-		//---------------------------------------------
-		initialize: function (el, options) {
-			el = $(el);
-			var self = this;
-			self.setOptions(options); // inherited from Options like jQuery.extend();
-			self.el = el; // cache the jQuery object
+        //-- init
+        //---------------------------------------------
+        initialize: function (el, options) {
+            el = $(el);
+            var self = this;
+            self.setOptions(options); // inherited from Options like jQuery.extend();
+            self.el = el; // cache the jQuery object
 
-			self.init();
-		},
+            self.init();
+        },
 
-		//-- Vars
-		//--------------------------------------------------------------
-		view: null,
-		viewName: 'View',
-		modules: {},
-		moduleName: 'Module',
+        //-- Vars
+        //--------------------------------------------------------------
+        view: null,
+        viewName: 'View',
+        modules: {},
+        moduleName: 'Module',
 
 
-		//-- Init
-		//--------------------------------------------------------------
-		init: function () {
-			var self = this;
-			var dataView = self.el.find('[data-view]').attr('data-view');
+        //-- Init
+        //--------------------------------------------------------------
+        init: function () {
+            var self = this;
+            var dataView = self.el.find('[data-view]').attr('data-view');
 
-			if (dataView) {
-				self.viewName = 'View' + dataView;
-			}
+            if (dataView) {
+                self.viewName = 'View' + dataView;
+            }
 
-			self.oldBrowserConsole();
-			self.setDeviceType();
-			self.loadViewJs();
+            self.oldBrowserConsole();
+            self.setDeviceType();
+            self.loadViewJs();
 
-			$(window).resize(function () {
-				self.setDeviceType();
-			});
-		},
+            $(window).resize(function () {
+                self.setDeviceType();
+            });
+        },
 
-		loadViewJs: function () {
-			var self = this;
+        loadViewJs: function () {
+            var self = this;
 
-			require(['src/views/' + self.viewName ], function () {
-				self.view = new $[self.viewName](self.el.find('[data-view="' + self.el.find('[data-view]').attr('data-view') + '"]'));
+            require(['src/views/' + self.viewName ], function () {
+                self.view = new $[self.viewName](self.el.find('[data-view="' + self.el.find('[data-view]').attr('data-view') + '"]'));
 
-				var $modules = self.el.find('[data-module]');
-				self.loadModulesJs(self.view, $modules);
-			});
-		},
+                var $modules = self.el.find('[data-module]');
+                self.loadModulesJs(self.view, $modules);
+            });
+        },
 
-		loadModulesJs: function (view, $modules) {
-			var self = this;
-			$.each($modules, function (index, value) {
-				var moduleName = 'Module' + $(value).attr('data-module');
+        loadModulesJs: function (view, $modules) {
+            var self = this;
+            $.each($modules, function (index, value) {
+                var moduleName = 'Module' + $(value).attr('data-module');
 
-				require(['src/modules/' + moduleName], function () {
-					var moduleName = self.moduleName + $(value).attr('data-module');
-					var newModule = new $[moduleName](view, $modules[index]);
+                require(['src/modules/' + moduleName], function () {
+                    var moduleName = self.moduleName + $(value).attr('data-module');
+                    var newModule = new $[moduleName](view, $modules[index]);
 
-					if (!self.modules[moduleName]) {
-						self.modules[moduleName] = [];
-					}
+                    if (!self.modules[moduleName]) {
+                        self.modules[moduleName] = [];
+                    }
 
-					self.modules[moduleName].push(newModule);
-				}, function (err) {
-					if (err.requireType != 'scripterror') {
-						throw err;
-					}
-				});
-			});
-		},
+                    self.modules[moduleName].push(newModule);
+                }, function (err) {
+                    if (err.requireType != 'scripterror') {
+                        throw err;
+                    }
+                });
+            });
+        },
 
-		setDeviceType: function () {
-			var self = this;
+        setDeviceType: function () {
+            var self = this;
 
-//			IE FIX FOR getComputedStyle
-			if (!window.getComputedStyle) {
-				window.getComputedStyle = function (el, pseudo) {
-					this.el = el;
-					this.getPropertyValue = function (prop) {
-						var re = /(\-([a-z]){1})/g;
-						if (prop == 'float') prop = 'styleFloat';
-						if (re.test(prop)) {
-							prop = prop.replace(re, function () {
-								return arguments[2].toUpperCase();
-							});
-						}
-						return el.currentStyle[prop] ? el.currentStyle[prop] : null;
-					};
-					return this;
-				};
-			}
+            // IE FIX FOR getComputedStyle
+            if (!window.getComputedStyle) {
+                window.getComputedStyle = function (el, pseudo) {
+                    this.el = el;
+                    this.getPropertyValue = function (prop) {
+                        var re = /(\-([a-z]){1})/g;
+                        if (prop == 'float') prop = 'styleFloat';
+                        if (re.test(prop)) {
+                            prop = prop.replace(re, function () {
+                                return arguments[2].toUpperCase();
+                            });
+                        }
+                        return el.currentStyle[prop] ? el.currentStyle[prop] : null;
+                    };
+                    return this;
+                };
+            }
 
-			var newDevice = window.getComputedStyle(document.body, ':after').getPropertyValue('content');
+            var newDevice = window.getComputedStyle(document.body, ':after').getPropertyValue('content');
 
-//			IE8 DEFAULT VALUE
-			if (!newDevice) {
-				newDevice = 'desktop';
-			}
+            // IE8 DEFAULT VALUE
+            if (!newDevice) {
+                newDevice = 'desktop';
+            }
 
-//			IE9-10 REMOVE QUOTE FROM CONTENT STRING
-			newDevice = newDevice.replace(/"/g, '');
+            // IE9-10 REMOVE QUOTE FROM CONTENT STRING
+            newDevice = newDevice.replace(/"/g, '');
 
-			if (newDevice != window.deviceType) {
-				window.deviceType = newDevice;
-			}
-		},
+            if (newDevice != window.deviceType) {
+                window.deviceType = newDevice;
+            }
+        },
 
-		oldBrowserConsole: function () {
-			// Avoid `console` errors in browsers that lack a console.
-			var method;
-			var noop = function () {};
-			var methods = [
-				'assert', 'clear', 'count', 'debug', 'dir', 'dirxml', 'error',
-				'exception', 'group', 'groupCollapsed', 'groupEnd', 'info', 'log',
-				'markTimeline', 'profile', 'profileEnd', 'table', 'time', 'timeEnd',
-				'timeStamp', 'trace', 'warn'
-			];
-			var length = methods.length;
-			var console = (window.console = window.console || {});
+        oldBrowserConsole: function () {
+            // Avoid `console` errors in browsers that lack a console.
+            var method;
+            var noop = function () {};
+            var methods = [
+                'assert', 'clear', 'count', 'debug', 'dir', 'dirxml', 'error',
+                'exception', 'group', 'groupCollapsed', 'groupEnd', 'info', 'log',
+                'markTimeline', 'profile', 'profileEnd', 'table', 'time', 'timeEnd',
+                'timeStamp', 'trace', 'warn'
+            ];
+            var length = methods.length;
+            var console = (window.console = window.console || {});
 
-			while (length--) {
-				method = methods[length];
+            while (length--) {
+                method = methods[length];
 
-				// Only stub undefined methods.
-				if (!console[method]) {
-					console[method] = noop;
-				}
-			}
-		},
+                // Only stub undefined methods.
+                if (!console[method]) {
+                    console[method] = noop;
+                }
+            }
+        },
 
-		empty: null
-	});
+        empty: null
+    });
 
-	return $[className];
+    return $[className];
 });

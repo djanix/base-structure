@@ -1,34 +1,34 @@
 define([
-	'src/modules/Module'
+    'src/modules/Module'
 ], function () {
-	"use strict";
-	var className = 'ModuleTest';
+    "use strict";
+    var className = 'ModuleTest';
 
-	$[className] = new Class({
-		jQuery: className,
-		Extends: $.Module,
-		options: {},
+    $[className] = new Class({
+        jQuery: className,
+        Extends: $.Module,
+        options: {},
 
-		//-- init
-		//---------------------------------------------
-		initialize: function (el, options) {
-			el = $(el);
-			var self = this;
-			self.parent(el, options);
-		},
+        //-- init
+        //---------------------------------------------
+        initialize: function (el, options) {
+            el = $(el);
+            var self = this;
+            self.parent(el, options);
+        },
 
-		//-- Vars
-		//--------------------------------------------------------------
+        //-- Vars
+        //--------------------------------------------------------------
 
-		// Functions
-		//----------------------------------------------------------------
-		test: function () {
-			var self = this;
-			console.log('module Test called');
-		},
+        // Functions
+        //----------------------------------------------------------------
+        test: function () {
+            var self = this;
+            console.log('module Test called');
+        },
 
-		empty: null
-	});
+        empty: null
+    });
 
-	return $[className];
+    return $[className];
 });
