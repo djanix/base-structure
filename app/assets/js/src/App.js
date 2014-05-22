@@ -1,26 +1,16 @@
 define([
-    'mootools',
-    'class.mutators',
-    'underscore',
+    'ring',
     'src/views/View',
     'src/modules/Module'
-], function () {
+], function (ring, View, Module) {
     "use strict";
+
     var className = 'App';
 
-    $[className] = new Class({
-        jQuery: className,
-        Implements: [Options, Events],
-        options: {},
-
-        //-- init
-        //---------------------------------------------
-        initialize: function (el, options) {
-            el = $(el);
+    $[className] = ring.create({
+        constructor: function (el) {
             var self = this;
-            self.setOptions(options); // inherited from Options like jQuery.extend();
-            self.el = el; // cache the jQuery object
-
+            self.el = $(el);
             self.init();
         },
 
@@ -141,9 +131,7 @@ define([
                     console[method] = noop;
                 }
             }
-        },
-
-        empty: null
+        }
     });
 
     return $[className];

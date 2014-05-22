@@ -1,27 +1,14 @@
 define([
-    'jquery',
-    'mootools',
-    'class.mutators',
-    'underscore'
-], function () {
+    'ring'
+], function (ring) {
     "use strict";
+
     var className = 'Module';
 
-    $[className] = new Class({
-        jQuery: className,
-        Implements: [Options, Events],
-        options: {},
-
-        //-- init
-        //---------------------------------------------
-        initialize: function (el, options) {
-            el = $(el);
+    $[className] = ring.create({
+        constructor: function (el) {
             var self = this;
-
-            self.el = el;
-
-            self.setOptions(options);
-            //-
+            self.el = $(el);
             self.init();
         },
 

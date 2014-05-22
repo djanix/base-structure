@@ -1,20 +1,15 @@
 define([
+    'ring',
     'src/modules/Module'
-], function () {
+], function (ring) {
     "use strict";
+
     var className = 'ModuleTest';
 
-    $[className] = new Class({
-        jQuery: className,
-        Extends: $.Module,
-        options: {},
-
-        //-- init
-        //---------------------------------------------
-        initialize: function (el, options) {
-            el = $(el);
+    $[className] = ring.create([$.Module], {
+        constructor: function (el) {
             var self = this;
-            self.parent(el, options);
+            self.$super(el);
         },
 
         //-- Vars

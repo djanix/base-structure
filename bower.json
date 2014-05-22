@@ -1,11 +1,12 @@
 {
-  "name": "project-name",
-  "version": "0.0.1",
+  "name": "base-structure",
+  "version": "0.9.1",
   "dependencies": {
-    "jquery": "1.11.0",
-    "modernizr": "~2.7.2",
+    "jquery": "1.11.1",
+    "modernizr": "~2.8.2",
     "underscore": "~1.6.0",
     "require-handlebars-plugin": "~0.8.0",
-    "requirejs": "~2.1.11"
+    "requirejs": "~2.1.11",
+    "ring": "~2.0.1"
   }
 }

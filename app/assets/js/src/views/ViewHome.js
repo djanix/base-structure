@@ -1,23 +1,17 @@
 define([
+    'ring',
     'src/views/View',
     'src/modules/ModuleTest',
     'hbs!/partials/test'
-], function (View, ModuleTest, tmplTest) {
+], function (ring, View, ModuleTest, tmplTest) {
     "use strict";
+
     var className = 'ViewHome';
 
-    $[className] = new Class({
-        jQuery: className,
-        Extends: $.View,
-        options: {},
-
-        //-- init
-        //---------------------------------------------
-        initialize: function (el, options) {
-            el = $(el);
+    $[className] = ring.create([$.View], {
+        constructor: function (el) {
             var self = this;
-
-            self.parent(el, options);
+            self.$super(el);
         },
 
         //-- Vars
@@ -27,8 +21,7 @@ define([
         //--------------------------------------------------------------
         initHook: function () {
             var self = this;
-
-            self.parent();
+            self.$super();
 
 //			Load Module
 //			You can also call it automatically by adding the attribute data-module="Test" in your html
@@ -49,14 +42,7 @@ define([
         //--------------------------------------------------------------
         bindEventsHook: function () {
             var self = this;
-            var newEl = self.el.find('.test');
-        },
-
-        customFunction: function () {
-            var self = this;
-        },
-
-        empty: null
+        }
     });
 
     return $[className];
