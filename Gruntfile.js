@@ -82,7 +82,7 @@ module.exports = function (grunt) {
         },
         sass_imports: {
             imports: {
-                src: ['<%= config.cssSrc %>/helpers/vars.scss', '<%= config.cssSrc %>/**/*.scss'],
+                src: ['<%= config.cssSrc %>/helpers/vars.scss', '<%= config.cssSrc %>/helpers/*.scss', '<%= config.cssSrc %>/**/*.scss'],
                 dest: '<%= config.cssDest %>/main.scss'
             }
         },
