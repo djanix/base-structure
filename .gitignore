@@ -28,5 +28,5 @@ node_modules/
 ############
 .sass-cache
 
-app/assets/css/dest/main.css
+app/assets/css/dest
 app/assets/js/libs/*/

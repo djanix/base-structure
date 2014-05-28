@@ -55,6 +55,16 @@ module.exports = function (grunt) {
                         to: '.css?v=<%= ((new Date()).valueOf().toString()) + (Math.floor((Math.random()*1000000)+1).toString()) %>"/>'
                     }
                 ]
+            },
+            'scss_import_path': {
+                src: ['<%= config.cssDest %>/main.scss'],
+                overwrite: true,
+                replacements: [
+                    {
+                        from: /\\/g,
+                        to: '/'
+                    }
+                ]
             }
         },
         sass: {
@@ -64,10 +74,16 @@ module.exports = function (grunt) {
             dist: {
                 files: [
                     {
-                        src: '<%= config.cssSrc %>/main.scss',
+                        src: '<%= config.cssDest %>/main.scss',
                         dest: '<%= config.cssDest %>/main.css'
                     }
                 ]
+            }
+        },
+        sass_imports: {
+            imports: {
+                src: ['<%= config.cssSrc %>/helpers/vars.scss', '<%= config.cssSrc %>/**/*.scss'],
+                dest: '<%= config.cssDest %>/main.scss'
             }
         },
         watch: {
@@ -85,9 +101,9 @@ module.exports = function (grunt) {
         }
     });
 
-    grunt.registerTask('default', ['build:js', 'build:css', 'replace', 'watch']);
+    grunt.registerTask('default', ['build:js', 'build:css', 'replace:cache_break', 'watch']);
 
-    grunt.registerTask('build', ['build:js', 'build:css', 'replace']);
-    grunt.registerTask('build:css', ['sass', 'autoprefixer', 'csswring']);
+    grunt.registerTask('build', ['build:js', 'build:css', 'replace:cache_break']);
+    grunt.registerTask('build:css', ['sass_imports', 'replace:scss_import_path', 'sass', 'autoprefixer', 'csswring']);
     grunt.registerTask('build:js', ['jshint']);
 };
