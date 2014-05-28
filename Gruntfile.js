@@ -89,11 +89,11 @@ module.exports = function (grunt) {
         watch: {
             js: {
                 files: ['<%= config.jsSrc %>/**/*.js'],
-                tasks: ['jshint']
+                tasks: ['build:js']
             },
             sass: {
                 files: ["<%= config.cssSrc %>/**/*.scss"],
-                tasks: ['sass_imports', 'replace:scss_import_path', 'sass', 'autoprefixer', 'csswring']
+                tasks: ['build:css']
             },
             options: {
                 spawn: true
