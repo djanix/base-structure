@@ -93,7 +93,7 @@ module.exports = function (grunt) {
             },
             sass: {
                 files: ["<%= config.cssSrc %>/**/*.scss"],
-                tasks: ['sass', 'autoprefixer', 'csswring']
+                tasks: ['sass_imports', 'replace:scss_import_path', 'sass', 'autoprefixer', 'csswring']
             },
             options: {
                 spawn: true
