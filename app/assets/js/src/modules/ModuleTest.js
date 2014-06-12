@@ -1,7 +1,8 @@
 define([
     'ring',
-    'src/modules/Module'
-], function (ring) {
+    'src/modules/Module',
+    'hbs!/partials/test'
+], function (ring, Module, tmplTest) {
     "use strict";
 
     var className = 'ModuleTest';
@@ -17,9 +18,15 @@ define([
 
         // Functions
         //----------------------------------------------------------------
-        test: function () {
+        addHtml: function () {
             var self = this;
-            console.log('module Test called');
+
+            self.el.html(tmplTest({
+                sentenceA: '<p>this is a test</p>',
+                sentenceB: {
+                    wordA: 'Word'
+                }
+            }));
         },
 
         empty: null

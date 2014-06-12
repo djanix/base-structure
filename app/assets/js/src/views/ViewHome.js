@@ -1,9 +1,8 @@
 define([
     'ring',
     'src/views/View',
-    'src/modules/ModuleTest',
-    'hbs!/partials/test'
-], function (ring, View, ModuleTest, tmplTest) {
+    'src/modules/ModuleTest'
+], function (ring, View, ModuleTest) {
     "use strict";
 
     var className = 'ViewHome';
@@ -25,15 +24,8 @@ define([
 
 //			Load Module
 //			You can also call it automatically by adding the attribute data-module="Test" in your html
-            var ModuleTest = new $.ModuleTest();
-            ModuleTest.test();
-
-            self.el.find('.templateDiv').append(tmplTest({
-                sentenceA: '<p>this is a test</p>',
-                sentenceB: {
-                    wordA: 'Word'
-                }
-            }));
+            var ModuleTest = new $.ModuleTest(self.el.find('.templateDiv'));
+            ModuleTest.addHtml();
 
             self.bindEventsHook();
         },

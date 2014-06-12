@@ -59,7 +59,7 @@ define([
 
                 require(['src/modules/' + moduleName], function () {
                     var moduleName = self.moduleName + $(value).attr('data-module');
-                    var newModule = new $[moduleName](view, $modules[index]);
+                    var newModule = new $[moduleName]($modules[index]);
 
                     if (!self.modules[moduleName]) {
                         self.modules[moduleName] = [];
