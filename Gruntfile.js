@@ -86,6 +86,19 @@ module.exports = function (grunt) {
                 dest: '<%= config.cssDest %>/main.scss'
             }
         },
+        uglify: {
+            dist: {
+                options: {
+                    sourceMap: true
+                },
+                files: [{
+                    expand: true,
+                    cwd: '<%= config.jsSrc %>',
+                    src: '**/*.js',
+                    dest: '<%= config.jsDest %>'
+                }]
+            }
+        },
         watch: {
             js: {
                 files: ['<%= config.jsSrc %>/**/*.js'],
@@ -105,5 +118,5 @@ module.exports = function (grunt) {
 
     grunt.registerTask('build', ['build:js', 'build:css', 'replace:cache_break']);
     grunt.registerTask('build:css', ['sass_imports', 'replace:scss_import_path', 'sass', 'autoprefixer', 'csswring']);
-    grunt.registerTask('build:js', ['jshint']);
+    grunt.registerTask('build:js', ['jshint', 'uglify']);
 };

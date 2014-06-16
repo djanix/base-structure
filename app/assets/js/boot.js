@@ -12,7 +12,7 @@ var ring;
             'hbs': './libs/require-handlebars-plugin/hbs'
         },
         shim: {
-            'src/App': {
+            'dest/App': {
                 deps: [
                     'jquery',
                     'ring'
@@ -33,7 +33,7 @@ var ring;
     });
 
     requirejs([
-        './src/App'
+        './dest/App'
     ], function () {
         $(function () {
             App = new $.App($('#site'));

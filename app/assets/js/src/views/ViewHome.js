@@ -1,7 +1,7 @@
 define([
     'ring',
-    'src/views/View',
-    'src/modules/ModuleTest',
+    'dest/views/View',
+    'dest/modules/ModuleTest',
     'hbs!/partials/test'
 ], function (ring, View, ModuleTest, tmplTest) {
     "use strict";

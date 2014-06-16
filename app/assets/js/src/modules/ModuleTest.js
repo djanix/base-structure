@@ -1,6 +1,6 @@
 define([
     'ring',
-    'src/modules/Module'
+    'dest/modules/Module'
 ], function (ring) {
     "use strict";
 

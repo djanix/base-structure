@@ -30,3 +30,4 @@ node_modules/
 
 app/assets/css/dest
 app/assets/js/libs/*/
+app/assets/js/dest

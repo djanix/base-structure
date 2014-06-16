@@ -1,7 +1,7 @@
 define([
     'ring',
-    'src/views/View',
-    'src/modules/Module'
+    'dest/views/View',
+    'dest/modules/Module'
 ], function (ring, View, Module) {
     "use strict";
 
