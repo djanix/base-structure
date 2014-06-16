@@ -1,5 +1,4 @@
 var App;
-var ring;
 
 (function () {
     "use strict";

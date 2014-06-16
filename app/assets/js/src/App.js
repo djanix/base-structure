@@ -59,7 +59,7 @@ define([
 
                 require(['src/modules/' + moduleName], function () {
                     var moduleName = self.moduleName + $(value).attr('data-module');
-                    var newModule = new $[moduleName](view, $modules[index]);
+                    var newModule = new $[moduleName]($modules[index]);
 
                     if (!self.modules[moduleName]) {
                         self.modules[moduleName] = [];
@@ -75,11 +75,9 @@ define([
         },
 
         setDeviceType: function () {
-            var self = this;
-
             // IE FIX FOR getComputedStyle
             if (!window.getComputedStyle) {
-                window.getComputedStyle = function (el, pseudo) {
+                window.getComputedStyle = function (el) {
                     this.el = el;
                     this.getPropertyValue = function (prop) {
                         var re = /(\-([a-z]){1})/g;

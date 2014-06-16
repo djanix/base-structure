@@ -8,7 +8,8 @@ module.exports = function (grunt) {
         jsSrc: 'app/assets/js/src',
         jsDest: 'app/assets/js/dest',
         cssSrc: 'app/assets/css/src',
-        cssDest: 'app/assets/css/dest'
+        cssDest: 'app/assets/css/dest',
+        cacheBreaker: '<%= ((new Date()).valueOf().toString()) + (Math.floor((Math.random()*1000000)+1).toString()) %>'
     };
 
     grunt.initConfig({
@@ -48,11 +49,15 @@ module.exports = function (grunt) {
                 replacements: [
                     {
                         from: /cacheBreak: \".*\"/g,
-                        to: 'cacheBreak: "<%= ((new Date()).valueOf().toString()) + (Math.floor((Math.random()*1000000)+1).toString()) %>"'
+                        to: 'cacheBreak: "<%= config.cacheBreaker %>"'
                     },
                     {
                         from: /\.css.*/g,
-                        to: '.css?v=<%= ((new Date()).valueOf().toString()) + (Math.floor((Math.random()*1000000)+1).toString()) %>"/>'
+                        to: '.css?v=<%= config.cacheBreaker %>"/>'
+                    },
+                    {
+                        from: /\.js.*?"/g,
+                        to: '.js?v=<%= config.cacheBreaker %>"'
                     }
                 ]
             },
