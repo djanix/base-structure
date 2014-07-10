@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <title>Base-structure by djanix</title>
+  </head>
+
+  <body>
+    <div id="container">
+      <div class="inner">
+
+        <header>
+          <h1>Base-structure</h1>
+          <h2>website base structure</h2>
+        </header>
+
+        <section id="downloads" class="clearfix">
+          <a href="https://github.com/djanix/base-structure/zipball/master" id="download-zip" class="button"><span>Download .zip</span></a>
+          <a href="https://github.com/djanix/base-structure/tarball/master" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a>
+          <a href="https://github.com/djanix/base-structure" id="view-on-github" class="button"><span>View on GitHub</span></a>
+        </section>
+
+        <hr>
+
+        <section id="main_content">
+          <h1>
+<a name="base-structure" class="anchor" href="#base-structure"><span class="octicon octicon-link"></span></a>base-structure</h1>
+
+<p>This is a frontend boilerplate to start a web project, using sass, requirejs, mootools classes and grunt.</p>
+
+<h3>
+<a name="what-you-need-to-install" class="anchor" href="#what-you-need-to-install"><span class="octicon octicon-link"></span></a>What you need to install</h3>
+
+<ul>
+<li>nodejs</li>
+<li> -&gt; grunt</li>
+<li> -&gt; bower (on windows you'll need to install git)</li>
+</ul><h3>
+<a name="how-to-start" class="anchor" href="#how-to-start"><span class="octicon octicon-link"></span></a>How to start</h3>
+
+<p>go to the project folder ( {project folder}/app ) and then run these commands:</p>
+
+<pre><code>npm install
+
+bower install
+
+grunt
+</code></pre>
+
+<h2>
+<a name="grunt" class="anchor" href="#grunt"><span class="octicon octicon-link"></span></a>grunt</h2>
+
+<h3>
+<a name="using-grunt-to" class="anchor" href="#using-grunt-to"><span class="octicon octicon-link"></span></a>using grunt to:</h3>
+
+<ul>
+<li>compile sass files</li>
+<li>minify css</li>
+<li>jshint</li>
+<li>auto prefix css3</li>
+<li>watch js/css files and recompile on the fly</li>
+</ul><h3>
+<a name="how-to-use-grunt" class="anchor" href="#how-to-use-grunt"><span class="octicon octicon-link"></span></a>how to use grunt:</h3>
+
+<h4>
+<a name="move-to-your-app-folder" class="anchor" href="#move-to-your-app-folder"><span class="octicon octicon-link"></span></a>move to your app folder</h4>
+
+<pre><code>cd path/to/project/folder
+</code></pre>
+
+<h4>
+<a name="install-dependencies" class="anchor" href="#install-dependencies"><span class="octicon octicon-link"></span></a>install dependencies</h4>
+
+<pre><code>npm install {package name} --save-dev
+</code></pre>
+
+<h4>
+<a name="add-the-new-package-in-gruntfilejs" class="anchor" href="#add-the-new-package-in-gruntfilejs"><span class="octicon octicon-link"></span></a>add the new package in Gruntfile.js</h4>
+
+<h4>
+<a name="run-grunt" class="anchor" href="#run-grunt"><span class="octicon octicon-link"></span></a>run grunt</h4>
+
+<pre><code>grunt
+</code></pre>
+
+<h3>
+<a name="more-info-on-grunt" class="anchor" href="#more-info-on-grunt"><span class="octicon octicon-link"></span></a>more info on grunt:</h3>
+
+<ul>
+<li><a href="http://gruntjs.com/getting-started">http://gruntjs.com/getting-started</a></li>
+</ul><h2>
+<a name="bower" class="anchor" href="#bower"><span class="octicon octicon-link"></span></a>bower</h2>
+
+<h3>
+<a name="using-bower-to-install-js-pluginsdependencies" class="anchor" href="#using-bower-to-install-js-pluginsdependencies"><span class="octicon octicon-link"></span></a>using bower to install js plugins/dependencies</h3>
+
+<pre><code>bower install [plugin name]
+</code></pre>
+
+<h2>
+<a name="js" class="anchor" href="#js"><span class="octicon octicon-link"></span></a>JS</h2>
+
+<p>requirejs is used to add dependencies.
+boot.js add the requirejs configuration and the call the app.
+app.js load js files needed to run the app, and allow to load the right view and module files</p>
+
+<p>using data-view="ViewName" in the html will load the right js (js/src/views/View[ViewName].js)</p>
+
+<p>every views will extend View.js</p>
+
+<p>you can do the same thing with the modules ( data-module="ModuleName" ) ... it will extend Module.js</p>
+
+<p>you can create modules and then call them in a view this way:</p>
+
+<pre><code>var ModuleTest = new $.ModuleTest();
+</code></pre>
+
+<p>don't forget to add the dependency in the define at the top of the file.</p>
+
+<p>*warning: use</p>
+
+<pre><code>self.el.find('.class')
+</code></pre>
+
+<p>instead of</p>
+
+<pre><code>$('.class')
+</code></pre>
+
+<h3>
+<a name="difference-between-a-view-and-a-module" class="anchor" href="#difference-between-a-view-and-a-module"><span class="octicon octicon-link"></span></a>difference between a view and a module:</h3>
+
+<p>A view is basically a page (home.html will be ViewHome.js ... products.html will be ViewProducts.js)
+A module will be inside a view. The same module can be shared between many views. A module can be present more than once in the same view too.
+Plus, you can instantiate a module on the page load (same as a view), or call it only when some stuff happens ( var ModuleTest = new $.ModuleTest(); )</p>
+
+<h2>
+<a name="sass" class="anchor" href="#sass"><span class="octicon octicon-link"></span></a>SASS</h2>
+
+<p>The only file added in the html is /app/assets/css/dest/main.css</p>
+
+<p>Every time you add a new scss file, you should add it to the main.scss</p>
+
+<p>Every file is concatened, minified, and all prefix are added with grunt. This way, no need to add -webkit, -moz, -o etc. Grunt will take care of it.</p>
+
+<p>The same structure as the js files apply. One folder for the views, and one folder for the modules.
+To be consistent, you should isolate every views with</p>
+
+<pre><code>[data-view="ViewName"] { }
+</code></pre>
+
+<p>and every module with</p>
+
+<pre><code>[data-module="ModuleName"] { }
+</code></pre>
+
+<p>to avoid conflicts.</p>
+
+<p>variables and mixin should go in helpers/vars.scss</p>
+
+<h2>
+<a name="responsive" class="anchor" href="#responsive"><span class="octicon octicon-link"></span></a>Responsive</h2>
+
+<ul>
+<li>optimize images for mobile vs desktop</li>
+<li>calc mixin</li>
+<li>css breakpoints / js breakpoint (window.deviceType)</li>
+</ul>
+        </section>
+
+        <footer>
+          Base-structure is maintained by <a href="https://github.com/djanix">djanix</a><br>
+          This page was generated by <a href="http://pages.github.com">GitHub Pages</a>. Tactile theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.
+        </footer>
+
+        
+      </div>
+    </div>
+  </body>
+</html>
