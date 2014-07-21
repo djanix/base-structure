@@ -44,7 +44,7 @@ define([
         loadViewJs: function () {
             var self = this;
 
-            require(['src/views/' + self.viewName ], function () {
+            require(['dest/views/' + self.viewName ], function () {
                 self.view = new $[self.viewName](self.el.find('[data-view="' + self.el.find('[data-view]').attr('data-view') + '"]'));
 
                 var $modules = self.el.find('[data-module]');
@@ -57,7 +57,7 @@ define([
             $.each($modules, function (index, value) {
                 var moduleName = 'Module' + $(value).attr('data-module');
 
-                require(['src/modules/' + moduleName], function () {
+                require(['dest/modules/' + moduleName], function () {
                     var moduleName = self.moduleName + $(value).attr('data-module');
                     var newModule = new $[moduleName]($modules[index]);
 
