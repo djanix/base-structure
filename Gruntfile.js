@@ -52,7 +52,7 @@ module.exports = function (grunt) {
         },
         replace: {
             cache_break: {
-                src: ['<%= config.basePath %>/*.<%= config.htmlFileExtensionhtml %>'],
+                src: ['<%= config.basePath %>/*.<%= config.htmlFileExtension %>'],
                 overwrite: true,
                 replacements: [
                     {
