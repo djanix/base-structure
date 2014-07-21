@@ -9,31 +9,39 @@ module.exports = function (grunt) {
         jsDest: 'app/assets/js/dest',
         cssSrc: 'app/assets/css/src',
         cssDest: 'app/assets/css/dest',
-        cacheBreaker: '<%= ((new Date()).valueOf().toString()) + (Math.floor((Math.random()*1000000)+1).toString()) %>'
+        htmlFileExtension: 'html',
+        cacheBreaker: '<%= ((new Date()).valueOf().toString()) + (Math.floor((Math.random()*1000000)+1).toString()) %>',
+        banner: '<%= pkg.name %> - <%= pkg.version %>\n' +
+                '<%= pkg.author.name %> - <%= pkg.author.url %>\n' +
+                'Copyright (c) <%= grunt.template.today("yyyy-mm-dd") %>'
     };
 
     grunt.initConfig({
         config: config,
         pkg: grunt.file.readJSON('package.json'),
-        banner: '/* <%= pkg.name %> - <%= pkg.version %>\n' +
-            '<%= pkg.homepage ? "* " + pkg.homepage + "\\n" : "" %>' +
-            '* Copyright (c) <%= grunt.template.today("yyyy-mm-dd") %> <%= pkg.author.name %> - <%= pkg.author.url %> */\n\n',
+        banner: '<%= config.banner %>',
         autoprefixer: {
-            single_file: {
+            files: {
                 options: {
                     browsers: ['last 3 version', '> 1%', 'ie 8']
                 },
-                src: '<%= config.cssDest %>/main.css',
-                dest: '<%= config.cssDest %>/main.css'
+                expand: true,
+                flatten: true,
+                src: '<%= config.cssDest %>/*.css',
+                dest: '<%= config.cssDest %>'
             }
         },
         csswring: {
             min: {
                 options: {
-                    map: true
+                    map: true,
+                    preserveHacks: true,
+                    banner: '<%= config.banner %>'
                 },
-                src: '<%= config.cssDest %>/main.css',
-                dest: '<%= config.cssDest %>/main.css'
+                expand: true,
+                flatten: true,
+                src: '<%= config.cssDest %>/*.css',
+                dest: '<%= config.cssDest %>/'
             }
         },
         jshint: {
@@ -44,7 +52,7 @@ module.exports = function (grunt) {
         },
         replace: {
             cache_break: {
-                src: ['<%= config.basePath %>/index.html'],
+                src: ['<%= config.basePath %>/*.<%= config.htmlFileExtensionhtml %>'],
                 overwrite: true,
                 replacements: [
                     {
@@ -62,7 +70,7 @@ module.exports = function (grunt) {
                 ]
             },
             'scss_import_path': {
-                src: ['<%= config.cssDest %>/main.scss'],
+                src: ['<%= config.cssDest %>/*.scss'],
                 overwrite: true,
                 replacements: [
                     {
@@ -78,12 +86,9 @@ module.exports = function (grunt) {
                 sourceMap: 'sass'
             },
             dist: {
-                files: [
-                    {
-                        src: '<%= config.cssDest %>/main.scss',
-                        dest: '<%= config.cssDest %>/main.css'
-                    }
-                ]
+                files: {
+                    '<%= config.cssDest %>/main.css': '<%= config.cssDest %>/main.scss'
+                }
             }
         },
         sass_imports: {
