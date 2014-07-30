@@ -126,8 +126,8 @@ module.exports = function (grunt) {
     });
 
     grunt.registerTask('default', ['build:js', 'build:css', 'replace:cache_break', 'watch']);
+    grunt.registerTask('deploy', ['build:js', 'build:css', 'replace:cache_break']);
 
-    grunt.registerTask('build', ['build:js', 'build:css', 'replace:cache_break']);
     grunt.registerTask('build:css', ['sass_imports', 'replace:scss_import_path', 'sass', 'autoprefixer', 'csswring']);
     grunt.registerTask('build:js', ['jshint', 'uglify']);
 };
