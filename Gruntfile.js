@@ -4,11 +4,12 @@ module.exports = function (grunt) {
     );
 
     var config = {
+        vhost: 'basestructure.local',
         basePath: 'app',
-        jsSrc: 'app/assets/js/src',
-        jsDest: 'app/assets/js/dest',
-        cssSrc: 'app/assets/css/src',
-        cssDest: 'app/assets/css/dest',
+        jsSrc: '<%= config.basePath %>/assets/js/src',
+        jsDest: '<%= config.basePath %>/assets/js/dest',
+        cssSrc: '<%= config.basePath %>/assets/css/src',
+        cssDest: '<%= config.basePath %>/assets/css/dest',
         htmlFileExtension: 'html',
         cacheBreaker: '<%= ((new Date()).valueOf().toString()) + (Math.floor((Math.random()*1000000)+1).toString()) %>',
         banner: '<%= pkg.name %> - <%= pkg.version %>\n' +
@@ -37,6 +38,15 @@ module.exports = function (grunt) {
                 flatten: true,
                 src: '<%= config.cssDest %>/*.css',
                 dest: '<%= config.cssDest %>'
+            }
+        },
+        browserSync: {
+            bsFiles: {
+                src : '<%= config.csDest %>/*.css'
+            },
+            options: {
+                proxy: '<%= config.vhost %>',
+                watchTask: true
             }
         },
         csswring: {
@@ -133,7 +143,7 @@ module.exports = function (grunt) {
         }
     });
 
-    grunt.registerTask('default', ['build:js', 'build:css', 'replace:cache_break', 'watch']);
+    grunt.registerTask('default', ['build:js', 'build:css', 'replace:cache_break', 'browserSync', 'watch']);
     grunt.registerTask('deploy', ['build:js', 'build:css', 'replace:cache_break']);
 
     grunt.registerTask('build:css', ['sass_imports', 'replace:scss_import_path', 'sass', 'autoprefixer', 'csswring']);
