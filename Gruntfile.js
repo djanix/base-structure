@@ -41,12 +41,15 @@ module.exports = function (grunt) {
             }
         },
         browserSync: {
-            bsFiles: {
-                src : '<%= config.csDest %>/*.css'
-            },
-            options: {
-                proxy: '<%= config.vhost %>',
-                watchTask: true
+            dev: {
+                bsFiles: {
+                    src : ['<%= config.cssDest %>/**/*.css']
+                },
+                options: {
+                    open: false,
+                    proxy: '<%= config.vhost %>',
+                    watchTask: true
+                }
             }
         },
         csswring: {
