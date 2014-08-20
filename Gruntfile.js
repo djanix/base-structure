@@ -32,7 +32,8 @@ module.exports = function (grunt) {
                         'ios 6',
                         'android 4',
                         'Firefox ESR'
-                    ]
+                    ],
+                    map: true
                 },
                 expand: true,
                 flatten: true,
@@ -103,8 +104,7 @@ module.exports = function (grunt) {
         },
         sass: {
             options: {
-                sourceComments: 'map',
-                sourceMap: 'sass'
+                sourceMap: true
             },
             dist: {
                 files: {
