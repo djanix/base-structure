@@ -1,41 +1,34 @@
-define([
-    'ring'
-], function (ring) {
-    "use strict";
+var ring = require('ring');
+var $ = require('jquery');
 
-    var className = 'View';
+$.View = ring.create({
+    constructor: function (el) {
+        var self = this;
+        self.el = $(el);
+        self.init();
+    },
 
-    $[className] = ring.create({
-        constructor: function (el) {
-            var self = this;
-            self.el = $(el);
-            self.init();
-        },
+    //-- Vars
+    //--------------------------------------------------------------
 
-        //-- Vars
-        //--------------------------------------------------------------
+    //-- Init
+    //--------------------------------------------------------------
+    init: function () {
+        var self = this;
 
-        //-- Init
-        //--------------------------------------------------------------
-        init: function () {
-            var self = this;
+        self.initHook();
+        self.bindEvents();
+    },
 
-            self.initHook();
-            self.bindEvents();
-        },
+    //-- Hooks
+    //--------------------------------------------------------------
+    initHook: function () {
+        var self = this;
+    },
 
-        //-- Hooks
-        //--------------------------------------------------------------
-        initHook: function () {
-            var self = this;
-        },
-
-        //-- Functions
-        //--------------------------------------------------------------
-        bindEvents: function () {
-            var self = this;
-        }
-    });
-
-    return $[className];
+    //-- Functions
+    //--------------------------------------------------------------
+    bindEvents: function () {
+        var self = this;
+    }
 });

@@ -41,6 +41,12 @@ module.exports = function (grunt) {
                 dest: '<%= config.cssDest %>'
             }
         },
+        browserify: {
+            files: {
+                src: '<%= config.jsSrc %>/App.js',
+                dest: '<%= config.jsDest %>/App.js'
+            }
+        },
         browserSync: {
             dev: {
                 bsFiles: {
@@ -150,5 +156,5 @@ module.exports = function (grunt) {
     grunt.registerTask('deploy', ['build:js', 'build:css', 'replace:cache_break']);
 
     grunt.registerTask('build:css', ['sass_imports', 'replace:scss_import_path', 'sass', 'autoprefixer', 'csswring']);
-    grunt.registerTask('build:js', ['jshint', 'uglify']);
+    grunt.registerTask('build:js', ['jshint', 'browserify'/*, 'uglify'*/]);
 };

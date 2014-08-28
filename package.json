@@ -18,6 +18,13 @@
     "grunt-sass": "~0.14.0",
     "grunt-scss-imports": "0.0.2",
     "grunt-text-replace": "~0.3.12",
-    "matchdep": "~0.3.0"
+    "matchdep": "~0.3.0",
+    "grunt-browserify": "^2.1.4"
+  },
+  "dependencies": {
+    "jquery": "^1.11.1",
+    "browsernizr": "^1.0.2",
+    "ring": "^2.0.1",
+    "handlebars": "^2.0.0-beta.1"
   }
 }
