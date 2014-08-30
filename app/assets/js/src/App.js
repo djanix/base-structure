@@ -12,6 +12,7 @@ $.App = ring.create({
 
     //-- Vars
     //--------------------------------------------------------------
+    jsPath: '/assets/js/dest/',
     view: null,
     viewName: 'View',
     modules: {},
@@ -60,7 +61,7 @@ $.App = ring.create({
 
     loadView: function (viewName) {
         var self = this;
-        var path = '/assets/js/dest/' + viewName + '.js';
+        var path = self.jsPath + viewName + '.js';
 
         self.loadScript(path, function(err, res) {
             if (err) { return console.log(['failing loading ' + path, err]); }
@@ -71,7 +72,7 @@ $.App = ring.create({
 
     loadModule: function (moduleName, $el, view) {
         var self = this;
-        var path = '/assets/js/dest/' + moduleName + '.js';
+        var path = self.jsPath + moduleName + '.js';
 
         self.loadScript(path, function(err, res) {
             if (err) { return console.log(['failing loading ' + path, err]); }
