@@ -1,36 +1,18 @@
-define([
-    'ring',
-    'dest/modules/Module',
-    'hbs!/partials/test'
-], function (ring, Module, tmplTest) {
-    "use strict";
+$.ModuleTest = ring.create([$.Module], {
+    constructor: function (view, el) {
+        var self = this;
+        self.$super(view, el);
+    },
 
-    var className = 'ModuleTest';
+    //-- Vars
+    //--------------------------------------------------------------
 
-    $[className] = ring.create([$.Module], {
-        constructor: function (el) {
-            var self = this;
-            self.$super(el);
-        },
+    // Functions
+    //----------------------------------------------------------------
+    init: function () {
+        var self = this;
+        self.el.html('<p>yayy</p>');
+    },
 
-        //-- Vars
-        //--------------------------------------------------------------
-
-        // Functions
-        //----------------------------------------------------------------
-        addHtml: function () {
-            var self = this;
-
-            self.el.html(tmplTest({
-                sentenceA: '<p>this is a test</p>',
-                sentenceB: {
-                    wordA: 'Word'
-                }
-            }));
-        },
-
-        empty: null
-    });
-
-    return $[className];
+    empty: null
 });

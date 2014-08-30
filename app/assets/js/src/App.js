@@ -1,5 +1,5 @@
-var ring = require('ring');
-var $ = require('jquery');
+window.ring = require('ring');
+window.$ = require('jquery');
 var View = require('./views/View');
 var Module = require('./modules/Module');
 
@@ -22,51 +22,67 @@ $.App = ring.create({
     //--------------------------------------------------------------
     init: function () {
         var self = this;
-        var dataView = self.el.find('[data-view]').attr('data-view');
+        var $view = self.el.find('[data-view]');
+        var $modules = self.el.find('[data-module]');
 
-        if (dataView) {
-            self.viewName = 'View' + dataView;
+        if ($view) {
+            self.viewName += $view.attr('data-view');
         }
 
         self.oldBrowserConsole();
         self.setDeviceType();
-        self.loadViewJs();
+
+        self.loadView(self.viewName);
+
+        $.each($modules, function (index, value) {
+            self.loadModule(self.moduleName + $(value).attr('data-module'), $modules[index], $view);
+        });
 
         $(window).resize(function () {
             self.setDeviceType();
         });
     },
 
-    loadViewJs: function () {
+    loadScript: function(url, callback) {
         var self = this;
 
-        require(['dest/views/' + self.viewName], function () {
-            self.view = new $[self.viewName](self.el.find('[data-view="' + self.el.find('[data-view]').attr('data-view') + '"]'));
-
-            var $modules = self.el.find('[data-module]');
-            self.loadModulesJs(self.view, $modules);
+        $.ajax({
+            url: url,
+            dataType: 'script'
+        })
+        .done(function (data, textStatus, jqXHR) {
+            return callback(null, 'success');
+        })
+        .fail(function (jqXHR, textStatus, errorThrown) {
+            return callback(errorThrown, null);
         });
     },
 
-    loadModulesJs: function (view, $modules) {
+    loadView: function (viewName) {
         var self = this;
-        $.each($modules, function (index, value) {
-            var moduleName = 'Module' + $(value).attr('data-module');
+        var path = '/assets/js/dest/' + viewName + '.js';
 
-            require(['dest/modules/' + moduleName], function () {
-                var moduleName = self.moduleName + $(value).attr('data-module');
-                var newModule = new $[moduleName]($modules[index]);
+        self.loadScript(path, function(err, res) {
+            if (err) { return console.log(['failing loading ' + path, err]); }
 
-                if (!self.modules[moduleName]) {
-                    self.modules[moduleName] = [];
-                }
+            self.view = new $[viewName](self.el.find('[data-view="' + self.el.find('[data-view]').attr('data-view') + '"]'));
+        });
+    },
 
-                self.modules[moduleName].push(newModule);
-            }, function (err) {
-                if (err.requireType != 'scripterror') {
-                    throw err;
-                }
-            });
+    loadModule: function (moduleName, $el, view) {
+        var self = this;
+        var path = '/assets/js/dest/' + moduleName + '.js';
+
+        self.loadScript(path, function(err, res) {
+            if (err) { return console.log(['failing loading ' + path, err]); }
+
+            var newModule = new $[moduleName](view, $el);
+
+            if (!self.modules[moduleName]) {
+                self.modules[moduleName] = [];
+            }
+
+            self.modules[moduleName].push(newModule);
         });
     },
 
@@ -129,5 +145,5 @@ $.App = ring.create({
 });
 
 $(function () {
-    var App = new $.App($('#site'));
+    window.App = new $.App($('#site'));
 });

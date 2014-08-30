@@ -43,8 +43,10 @@ module.exports = function (grunt) {
         },
         browserify: {
             files: {
-                src: '<%= config.jsSrc %>/App.js',
-                dest: '<%= config.jsDest %>/App.js'
+                expand: true,
+                flatten: true,
+                src: '<%= config.jsSrc %>/**/*.js',
+                dest: '<%= config.jsDest %>'
             }
         },
         browserSync: {

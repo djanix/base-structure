@@ -1,9 +1,7 @@
-var ring = require('ring');
-var $ = require('jquery');
-
 $.Module = ring.create({
-    constructor: function (el) {
+    constructor: function (view, el) {
         var self = this;
+        self.view = $(view);
         self.el = $(el);
         self.init();
     },

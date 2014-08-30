@@ -1,41 +1,30 @@
-define([
-    'ring',
-    'dest/views/View',
-    'dest/modules/ModuleTest'
-], function (ring) {
-    "use strict";
+$.ViewHome = ring.create([$.View], {
+    constructor: function (el) {
+        var self = this;
+        self.$super(el);
+    },
 
-    var className = 'ViewHome';
+    //-- Vars
+    //--------------------------------------------------------------
 
-    $[className] = ring.create([$.View], {
-        constructor: function (el) {
-            var self = this;
-            self.$super(el);
-        },
+    //-- Init
+    //--------------------------------------------------------------
+    initHook: function () {
+        var self = this;
+        self.$super();
 
-        //-- Vars
-        //--------------------------------------------------------------
+//	    Load Module
+//	    You can also call it automatically by adding the attribute data-module="Test" in your html
+        var ModuleTest = App.loadModule('ModuleTest', self.el.find('.test'), self.el);
 
-        //-- Init
-        //--------------------------------------------------------------
-        initHook: function () {
-            var self = this;
-            self.$super();
+        self.bindEventsHook();
+    },
 
-//			Load Module
-//			You can also call it automatically by adding the attribute data-module="Test" in your html
-            var ModuleTest = new $.ModuleTest(self.el.find('.templateDiv'));
-            ModuleTest.addHtml();
+    //-- Functions
+    //--------------------------------------------------------------
+    bindEventsHook: function () {
+        var self = this;
+    },
 
-            self.bindEventsHook();
-        },
-
-        //-- Functions
-        //--------------------------------------------------------------
-        bindEventsHook: function () {
-
-        }
-    });
-
-    return $[className];
+    empty: null
 });

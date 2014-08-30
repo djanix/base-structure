@@ -1,6 +1,3 @@
-var ring = require('ring');
-var $ = require('jquery');
-
 $.View = ring.create({
     constructor: function (el) {
         var self = this;
@@ -30,5 +27,7 @@ $.View = ring.create({
     //--------------------------------------------------------------
     bindEvents: function () {
         var self = this;
-    }
+    },
+
+    empty: null
 });
