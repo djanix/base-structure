@@ -47,6 +47,11 @@ module.exports = function (grunt) {
                 flatten: true,
                 src: '<%= config.jsSrc %>/**/*.js',
                 dest: '<%= config.jsDest %>'
+            },
+            options: {
+                transform: ["browserify-shim"],
+                debug: true,
+                watch: true
             }
         },
         browserSync: {
@@ -133,9 +138,9 @@ module.exports = function (grunt) {
                 },
                 files: [{
                     expand: true,
-                    cwd: '<%= config.jsSrc %>',
+                    cwd: '<%= config.jsDest %>',
                     src: '**/*.js',
-                    dest: '<%= config.jsDest %>'
+                    dest: '<%= config.jsDest %>/'
                 }]
             }
         },
