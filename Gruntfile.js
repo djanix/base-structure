@@ -49,9 +49,15 @@ module.exports = function (grunt) {
                 dest: '<%= config.jsDest %>'
             },
             options: {
-                transform: ["browserify-shim"],
-                debug: true,
-                watch: true
+//                plugin: [['minifyify', {
+//                    map: 'App.map',
+//                    output: '<%= config.jsDest %>/App.map'
+//                }]],
+                transform: ['browserify-shim'/*, 'uglifyify'*/],
+                watch: true,
+                bundleOptions: {
+                    debug: true
+                }
             }
         },
         browserSync: {
@@ -77,6 +83,13 @@ module.exports = function (grunt) {
                 flatten: true,
                 src: '<%= config.cssDest %>/*.css',
                 dest: '<%= config.cssDest %>/'
+            }
+        },
+        exorcise: {
+            options: {},
+            files: {
+                src: '<%= config.jsDest %>/*.js',
+                dest: '<%= config.jsDest %>/App.map'
             }
         },
         jshint: {
@@ -131,19 +144,26 @@ module.exports = function (grunt) {
                 dest: '<%= config.cssDest %>/main.scss'
             }
         },
-        uglify: {
-            dist: {
-                options: {
-                    sourceMap: true
-                },
-                files: [{
-                    expand: true,
-                    cwd: '<%= config.jsDest %>',
-                    src: '**/*.js',
-                    dest: '<%= config.jsDest %>/'
-                }]
-            }
-        },
+//        uglify: {
+//            dist: {
+//                options: {
+//                    sourceMap: true,
+//                    sourceMapIncludeSources: true,
+//                    sourceMapIn: '<%= config.jsDest %>/App.map'
+//                    sourceMapName: function(path) {
+//                        var pathRegex = new RegExp(config.basePath + '/',"g");
+//                        var newPath = '/' + path.replace(pathRegex, '');
+//                        return newPath.replace(/\.js/,".map")
+//                    }
+//                },
+//                files: [{
+//                    expand: true,
+//                    cwd: '<%= config.jsDest %>',
+//                    src: '**/*.js',
+//                    dest: '<%= config.jsDest %>/'
+//                }]
+//            }
+//        },
         watch: {
             js: {
                 files: ['<%= config.jsSrc %>/**/*.js'],
@@ -163,5 +183,5 @@ module.exports = function (grunt) {
     grunt.registerTask('deploy', ['build:js', 'build:css', 'replace:cache_break']);
 
     grunt.registerTask('build:css', ['sass_imports', 'replace:scss_import_path', 'sass', 'autoprefixer', 'csswring']);
-    grunt.registerTask('build:js', ['jshint', 'browserify'/*, 'uglify'*/]);
+    grunt.registerTask('build:js', ['jshint', 'browserify', 'exorcise']);
 };
