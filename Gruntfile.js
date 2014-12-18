@@ -90,16 +90,6 @@ module.exports = function (grunt) {
                         to: '.js?v=<%= config.cacheBreaker %>"'
                     }
                 ]
-            },
-            'scss_import_path': {
-                src: ['<%= config.cssDest %>/*.scss'],
-                overwrite: true,
-                replacements: [
-                    {
-                        from: /\\/g,
-                        to: '/'
-                    }
-                ]
             }
         },
         sass: {
@@ -149,6 +139,6 @@ module.exports = function (grunt) {
     grunt.registerTask('default', ['build:js', 'build:css', 'replace:cache_break', 'browserSync', 'watch']);
     grunt.registerTask('deploy', ['build:js', 'build:css', 'replace:cache_break']);
 
-    grunt.registerTask('build:css', ['sass_imports', 'replace:scss_import_path', 'sass', 'autoprefixer', 'csswring']);
+    grunt.registerTask('build:css', ['sass_imports', 'sass', 'autoprefixer', 'csswring']);
     grunt.registerTask('build:js', ['jshint', 'uglify']);
 };
