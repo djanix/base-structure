@@ -13,9 +13,7 @@ $.ViewHome = ring.create([$.View], {
         var self = this;
         self.$super();
 
-//	    Load Module
-//	    You can also call it automatically by adding the attribute data-module="Test" in your html
-        var ModuleTest = App.loadModule('ModuleTest', self.el.find('.test'), self.el);
+        ModuleTest.addHtml();
 
         self.bindEventsHook();
     },

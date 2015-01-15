@@ -45,15 +45,15 @@ module.exports = function (grunt) {
             files: {
                 expand: true,
                 flatten: true,
-                src: '<%= config.jsSrc %>/**/*.js',
+                src: '<%= config.jsSrc %>/App.js',
                 dest: '<%= config.jsDest %>'
             },
             options: {
-//                plugin: [['minifyify', {
-//                    map: 'App.map',
-//                    output: '<%= config.jsDest %>/App.map'
-//                }]],
-                transform: ['browserify-shim'/*, 'uglifyify'*/],
+                plugin: [['minifyify', {
+                    map: 'App.map',
+                    output: '<%= config.jsDest %>/App.map'
+                }]],
+                transform: ['browserify-shim', 'browserify-handlebars'],
                 watch: true,
                 bundleOptions: {
                     debug: true
@@ -144,26 +144,6 @@ module.exports = function (grunt) {
                 dest: '<%= config.cssDest %>/main.scss'
             }
         },
-//        uglify: {
-//            dist: {
-//                options: {
-//                    sourceMap: true,
-//                    sourceMapIncludeSources: true,
-//                    sourceMapIn: '<%= config.jsDest %>/App.map'
-//                    sourceMapName: function(path) {
-//                        var pathRegex = new RegExp(config.basePath + '/',"g");
-//                        var newPath = '/' + path.replace(pathRegex, '');
-//                        return newPath.replace(/\.js/,".map")
-//                    }
-//                },
-//                files: [{
-//                    expand: true,
-//                    cwd: '<%= config.jsDest %>',
-//                    src: '**/*.js',
-//                    dest: '<%= config.jsDest %>/'
-//                }]
-//            }
-//        },
         watch: {
             js: {
                 files: ['<%= config.jsSrc %>/**/*.js'],
@@ -183,5 +163,5 @@ module.exports = function (grunt) {
     grunt.registerTask('deploy', ['build:js', 'build:css', 'replace:cache_break']);
 
     grunt.registerTask('build:css', ['sass_imports', 'replace:scss_import_path', 'sass', 'autoprefixer', 'csswring']);
-    grunt.registerTask('build:js', ['jshint', 'browserify', 'exorcise']);
+    grunt.registerTask('build:js', ['jshint', 'browserify']);
 };

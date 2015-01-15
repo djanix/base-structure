@@ -1,7 +1,25 @@
-window.ring = require('ring');
+window._ = require('underscore');
 window.$ = require('jquery');
-var View = require('./views/View');
-var Module = require('./modules/Module');
+window.ring = require('ring');
+
+require('handlebars');
+
+require('./views/View');
+require('./views/ViewHome');
+
+require('./modules/Module');
+require('./modules/ModuleTest');
+
+$(function () {
+    //app
+    window.App = new $.App($('#site'));
+
+    //modules
+    window.ModuleTest = new $.ModuleTest($('[data-module="Test"]'));
+
+    //views
+    window.View = new $.ViewHome($('[data-view="Home"]'));
+});
 
 $.App = ring.create({
     constructor: function (el) {
@@ -12,78 +30,18 @@ $.App = ring.create({
 
     //-- Vars
     //--------------------------------------------------------------
-    jsPath: '/assets/js/dest/',
-    view: null,
-    viewName: 'View',
-    modules: {},
-    moduleName: 'Module',
 
 
     //-- Init
     //--------------------------------------------------------------
     init: function () {
         var self = this;
-        var $view = self.el.find('[data-view]');
-        var $modules = self.el.find('[data-module]');
-
-        if ($view) {
-            self.viewName += $view.attr('data-view');
-        }
 
         self.oldBrowserConsole();
         self.setDeviceType();
 
-        self.loadView(self.viewName);
-
-        $.each($modules, function (index, value) {
-            self.loadModule(self.moduleName + $(value).attr('data-module'), $modules[index], $view);
-        });
-
         $(window).resize(function () {
             self.setDeviceType();
-        });
-    },
-
-    loadScript: function(url, callback) {
-        var self = this;
-
-        $.ajax({
-            url: url,
-            dataType: 'script'
-        })
-        .done(function (data, textStatus, jqXHR) {
-            return callback(null, 'success');
-        })
-        .fail(function (jqXHR, textStatus, errorThrown) {
-            return callback(errorThrown, null);
-        });
-    },
-
-    loadView: function (viewName) {
-        var self = this;
-        var path = self.jsPath + viewName + '.js';
-
-        self.loadScript(path, function(err, res) {
-            if (err) { return console.log(['failing loading ' + path, err]); }
-
-            self.view = new $[viewName](self.el.find('[data-view="' + self.el.find('[data-view]').attr('data-view') + '"]'));
-        });
-    },
-
-    loadModule: function (moduleName, $el, view) {
-        var self = this;
-        var path = self.jsPath + moduleName + '.js';
-
-        self.loadScript(path, function(err, res) {
-            if (err) { return console.log(['failing loading ' + path, err]); }
-
-            var newModule = new $[moduleName](view, $el);
-
-            if (!self.modules[moduleName]) {
-                self.modules[moduleName] = [];
-            }
-
-            self.modules[moduleName].push(newModule);
         });
     },
 
@@ -143,8 +101,4 @@ $.App = ring.create({
             }
         }
     }
-});
-
-$(function () {
-    window.App = new $.App($('#site'));
 });

@@ -1,7 +1,6 @@
 $.Module = ring.create({
-    constructor: function (view, el) {
+    constructor: function (el) {
         var self = this;
-        self.view = $(view);
         self.el = $(el);
         self.init();
     },

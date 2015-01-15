@@ -1,7 +1,9 @@
+var Template = require('../../../../partials/test.hbs');
+
 $.ModuleTest = ring.create([$.Module], {
-    constructor: function (view, el) {
+    constructor: function (el) {
         var self = this;
-        self.$super(view, el);
+        self.$super(el);
     },
 
     //-- Vars
@@ -9,9 +11,14 @@ $.ModuleTest = ring.create([$.Module], {
 
     // Functions
     //----------------------------------------------------------------
-    init: function () {
+    addHtml: function () {
         var self = this;
-        self.el.html('<p>yayy</p>');
+        self.el.html(Template({
+            sentenceA: '<p>this is a test</p>',
+            sentenceB: {
+                wordA: 'Word'
+            }
+        }));
     },
 
     empty: null
