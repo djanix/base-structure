@@ -11,13 +11,13 @@ require('./modules/Module');
 require('./modules/ModuleTest');
 
 $(function () {
-    new $.App($('#site'));
+    window.App = new $.App($('#site'));
 
     //Modules
-    new $.ModuleTest($('[data-module="Test"]'));
+    window.ModuleTest = new $.ModuleTest($('[data-module="Test"]'));
 
     //Views
-    new $.ViewHome($('[data-view="Home"]'));
+    window.ViewHome = new $.ViewHome($('[data-view="Home"]'));
 });
 
 $.App = ring.create({
