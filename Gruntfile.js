@@ -55,7 +55,7 @@ module.exports = function (grunt) {
                 }]],
                 transform: ['browserify-shim', 'browserify-handlebars'],
                 watch: true,
-                bundleOptions: {
+                browserifyOptions: {
                     debug: true
                 }
             }
@@ -85,13 +85,6 @@ module.exports = function (grunt) {
                 dest: '<%= config.cssDest %>/'
             }
         },
-        exorcise: {
-            options: {},
-            files: {
-                src: '<%= config.jsDest %>/*.js',
-                dest: '<%= config.jsDest %>/App.map'
-            }
-        },
         jshint: {
             files: ['<%= config.jsSrc %>/**/*.js'],
             options: {
@@ -116,21 +109,11 @@ module.exports = function (grunt) {
                         to: '.js?v=<%= config.cacheBreaker %>"'
                     }
                 ]
-            },
-            'scss_import_path': {
-                src: ['<%= config.cssDest %>/*.scss'],
-                overwrite: true,
-                replacements: [
-                    {
-                        from: /\\/g,
-                        to: '/'
-                    }
-                ]
             }
         },
         sass: {
             options: {
-                sourceMap: true
+                sourceMap: './main.css.map'
             },
             dist: {
                 files: {
@@ -162,6 +145,6 @@ module.exports = function (grunt) {
     grunt.registerTask('default', ['build:js', 'build:css', 'replace:cache_break', 'browserSync', 'watch']);
     grunt.registerTask('deploy', ['build:js', 'build:css', 'replace:cache_break']);
 
-    grunt.registerTask('build:css', ['sass_imports', 'replace:scss_import_path', 'sass', 'autoprefixer', 'csswring']);
+    grunt.registerTask('build:css', ['sass_imports', 'sass', 'autoprefixer', 'csswring']);
     grunt.registerTask('build:js', ['jshint', 'browserify']);
 };
