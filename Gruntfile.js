@@ -44,7 +44,11 @@ module.exports = function (grunt) {
         browserSync: {
             dev: {
                 bsFiles: {
-                    src : ['<%= config.cssDest %>/**/*.css']
+                    src : [
+                        '<%= config.cssDest %>/**/*.css',
+                        '<%= config.jsDest %>/**/*.js',
+                        '<%= config.basePath %>/**/*.html'
+                    ]
                 },
                 options: {
                     open: false,
@@ -123,7 +127,7 @@ module.exports = function (grunt) {
         },
         watch: {
             js: {
-                files: ['<%= config.jsSrc %>/**/*.js'],
+                files: ['<%= config.jsSrc %>/**/*.js', '<%= config.basePath %>/**/*.hbs'],
                 tasks: ['build:js']
             },
             sass: {
