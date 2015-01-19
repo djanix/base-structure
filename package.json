@@ -28,7 +28,7 @@
     "watchify": "^2.2.1"
   },
   "dependencies": {
-    "jquery": "^1.12",
+    "jquery": "^1.11.2",
     "ring": "^2.0.1",
     "underscore": "^1.7.0"
   },
