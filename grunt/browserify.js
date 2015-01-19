@@ -10,7 +10,10 @@ module.exports = {
             map: 'App.map',
             output: '<%= jsDest %>/App.map'
         }]],
-        transform: ['browserify-shim', 'browserify-handlebars'],
+        transform: [
+            'browserify-shim',
+            'browserify-handlebars'
+        ],
         watch: true,
         browserifyOptions: {
             debug: true

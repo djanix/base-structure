@@ -1,6 +1,9 @@
 module.exports = {
     js: {
-        files: ['<%= jsSrc %>/**/*.js', '<%= basePath %>/**/*.hbs'],
+        files: [
+            '<%= jsSrc %>/**/*.js',
+            '<%= basePath %>/**/*.hbs'
+        ],
         tasks: ['build:js']
     },
     sass: {

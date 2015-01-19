@@ -1,6 +1,7 @@
 module.exports = function (grunt) {
-    // Check the /grunt folder to see all tasks (1 task per file)
-    // regrouped tasks are in grunt/aliases.js file
+    // --------------------------------------------------------------
+    //   Check the /grunt folder to see all tasks (1 task per file)
+    // --------------------------------------------------------------
 
     var config = {
         vhost: 'basestructure.local',
@@ -25,4 +26,10 @@ module.exports = function (grunt) {
             scope: 'devDependencies'
         }
     });
+
+    grunt.registerTask('default', ['deploy', 'browserSync', 'watch']);
+    grunt.registerTask('deploy', ['build:js', 'build:css', 'replace:cache_break']);
+
+    grunt.registerTask('build:css', ['sass_imports', 'sass', 'autoprefixer', 'csswring']);
+    grunt.registerTask('build:js', ['jshint', 'browserify']);
 };
