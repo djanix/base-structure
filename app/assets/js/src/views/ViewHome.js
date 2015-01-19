@@ -13,7 +13,7 @@ $.ViewHome = ring.create([$.View], {
         var self = this;
         self.$super();
 
-        ModuleTest.addHtml();
+        App.ModuleTest.addHtml();
 
         self.bindEventsHook();
     },

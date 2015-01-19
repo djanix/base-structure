@@ -14,10 +14,10 @@ $(function () {
     window.App = new $.App($('#site'));
 
     //Modules
-    window.ModuleTest = new $.ModuleTest($('[data-module="Test"]'));
+    App.ModuleTest = new $.ModuleTest($('[data-module="Test"]'));
 
     //Views
-    window.ViewHome = new $.ViewHome($('[data-view="Home"]'));
+    App.ViewHome = new $.ViewHome($('[data-view="Home"]'));
 });
 
 $.App = ring.create({
@@ -36,7 +36,6 @@ $.App = ring.create({
     init: function () {
         var self = this;
 
-        self.oldBrowserConsole();
         self.setDeviceType();
 
         $(window).resize(function () {
@@ -75,29 +74,6 @@ $.App = ring.create({
 
         if (newDevice != window.deviceType) {
             window.deviceType = newDevice;
-        }
-    },
-
-    oldBrowserConsole: function () {
-        // Avoid `console` errors in browsers that lack a console.
-        var method;
-        var noop = function () {};
-        var methods = [
-            'assert', 'clear', 'count', 'debug', 'dir', 'dirxml', 'error',
-            'exception', 'group', 'groupCollapsed', 'groupEnd', 'info', 'log',
-            'markTimeline', 'profile', 'profileEnd', 'table', 'time', 'timeEnd',
-            'timeStamp', 'trace', 'warn'
-        ];
-        var length = methods.length;
-        var console = (window.console = window.console || {});
-
-        while (length--) {
-            method = methods[length];
-
-            // Only stub undefined methods.
-            if (!console[method]) {
-                console[method] = noop;
-            }
         }
     }
 });
