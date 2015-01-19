@@ -4,25 +4,25 @@ module.exports = function (grunt) {
     // --------------------------------------------------------------
 
     var config = {
-        vhost: 'basestructure.local',
+        banner: '<%= pkg.name %> - <%= pkg.version %>\n' +
+                '<%= pkg.author.name %> - <%= pkg.author.url %>\n' +
+                'Copyright (c) <%= grunt.template.today("yyyy-mm-dd") %>',
         basePath: 'app',
-        jsSrc: '<%= basePath %>/assets/js/src',
-        jsDest: '<%= basePath %>/assets/js/dest',
+        cacheBreaker: '<%= ((new Date()).valueOf().toString()) + (Math.floor((Math.random()*1000000)+1).toString()) %>',
         cssSrc: '<%= basePath %>/assets/css/src',
         cssDest: '<%= basePath %>/assets/css/dest',
         htmlFileExtension: 'html',
-        cacheBreaker: '<%= ((new Date()).valueOf().toString()) + (Math.floor((Math.random()*1000000)+1).toString()) %>',
+        jsSrc: '<%= basePath %>/assets/js/src',
+        jsDest: '<%= basePath %>/assets/js/dest',
         pkg: grunt.file.readJSON('package.json'),
-        banner: '<%= pkg.name %> - <%= pkg.version %>\n' +
-                '<%= pkg.author.name %> - <%= pkg.author.url %>\n' +
-                'Copyright (c) <%= grunt.template.today("yyyy-mm-dd") %>'
+        vhost: 'basestructure.local'
     };
 
     require('load-grunt-config')(grunt, {
         data: config,
         loadGruntTasks: {
-            pattern: 'grunt-*',
             config: require('./package.json'),
+            pattern: 'grunt-*',
             scope: 'devDependencies'
         }
     });
