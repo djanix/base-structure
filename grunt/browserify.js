@@ -2,13 +2,13 @@ module.exports = {
     files: {
         expand: true,
         flatten: true,
-        src: '<%= jsSrc %>/App.js',
+        src: '<%= jsSrc %>/boot.js',
         dest: '<%= jsDest %>'
     },
     options: {
         plugin: [['minifyify', {
-            map: 'App.map',
-            output: '<%= jsDest %>/App.map'
+            map: 'boot.map',
+            output: '<%= jsDest %>/boot.map'
         }]],
         transform: [
             'browserify-shim',

@@ -13,6 +13,7 @@ $.ModuleTest = ring.create([$.Module], {
     //----------------------------------------------------------------
     addHtml: function () {
         var self = this;
+
         self.el.html(Template({
             sentenceA: '<p>this is a test</p>',
             sentenceB: {

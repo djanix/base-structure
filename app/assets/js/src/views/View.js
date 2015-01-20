@@ -12,7 +12,6 @@ $.View = ring.create({
     //--------------------------------------------------------------
     init: function () {
         var self = this;
-
         self.initHook();
         self.bindEvents();
     },
