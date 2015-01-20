@@ -12,10 +12,10 @@ module.exports = function (grunt) {
         cssSrc: '<%= basePath %>/assets/css/src',
         cssDest: '<%= basePath %>/assets/css/dest',
         htmlFileExtension: 'html',
+        imgPath: '<%= basePath %>/assets/img',
         jsSrc: '<%= basePath %>/assets/js/src',
         jsDest: '<%= basePath %>/assets/js/dest',
         pkg: grunt.file.readJSON('package.json'),
-        imgPath: '<%= basePath %>/assets/img',
         vhost: 'basestructure.local'
     };
 
