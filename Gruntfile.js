@@ -15,6 +15,7 @@ module.exports = function (grunt) {
         jsSrc: '<%= basePath %>/assets/js/src',
         jsDest: '<%= basePath %>/assets/js/dest',
         pkg: grunt.file.readJSON('package.json'),
+        imgPath: '<%= basePath %>/assets/img',
         vhost: 'basestructure.local'
     };
 
@@ -28,7 +29,7 @@ module.exports = function (grunt) {
     });
 
     grunt.registerTask('default', ['deploy', 'browserSync', 'watch']);
-    grunt.registerTask('deploy', ['build:js', 'build:css', 'replace:cache_break']);
+    grunt.registerTask('deploy', ['build:js', 'sprite', 'build:css', 'replace:cache_break']);
 
     grunt.registerTask('build:css', ['sass_imports', 'sass', 'autoprefixer', 'csswring']);
     grunt.registerTask('build:js', ['jshint', 'browserify']);
