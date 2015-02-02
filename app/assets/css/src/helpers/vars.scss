@@ -14,19 +14,19 @@ $mobile: 540px;
 //    to { transform: rotate(359deg); }
 //}
 @mixin keyframes($animation-name) {
-    @-webkit-keyframes $animation-name {
+    @-webkit-keyframes #{$animation-name} {
         @content;
     }
-    @-moz-keyframes $animation-name {
+    @-moz-keyframes #{$animation-name} {
         @content;
     }
-    @-ms-keyframes $animation-name {
+    @-ms-keyframes #{$animation-name} {
         @content;
     }
-    @-o-keyframes $animation-name {
+    @-o-keyframes #{$animation-name} {
         @content;
     }
-    @keyframes $animation-name {
+    @keyframes #{$animation-name} {
         @content;
     }
 }
@@ -35,7 +35,6 @@ $mobile: 540px;
 @mixin animation($str) {
     -webkit-animation: #{$str};
     -moz-animation: #{$str};
-    -ms-animation: #{$str};
     -o-animation: #{$str};
     animation: #{$str};
 }
