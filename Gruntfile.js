@@ -33,4 +33,5 @@ module.exports = function (grunt) {
 
     grunt.registerTask('build:css', ['sass_imports', 'sass', 'autoprefixer', 'csswring']);
     grunt.registerTask('build:js', ['jshint', 'browserify']);
+    grunt.registerTask('imageMin', ['imagemin']);
 };
