@@ -8,9 +8,12 @@ module.exports = {
             ]
         },
         options: {
-            open: false,
-            proxy: '<%= vhost %>',
-            watchTask: true
+            //open: false,
+            //proxy: '<%= vhost %>',
+            watchTask: true,
+            server: {
+                baseDir: '<%= basePath %>/'
+            }
         }
     }
 };
