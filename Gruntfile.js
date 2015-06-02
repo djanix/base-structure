@@ -28,10 +28,10 @@ module.exports = function (grunt) {
         }
     });
 
-    grunt.registerTask('default', ['deploy', 'browserSync', 'watch']);
-    grunt.registerTask('deploy', ['build:js', 'sprite', 'build:css', 'replace:cache_break']);
+    grunt.registerTask('default', ['build:css', 'build:js', 'browserSync', 'watch']);
+    grunt.registerTask('deploy', ['build:css', 'build:js', 'replace:cache_break']);
 
-    grunt.registerTask('build:css', ['sass_imports', 'replace:scss_import_path', 'sass', 'autoprefixer', 'csswring']);
+    grunt.registerTask('build:css', ['sprite', 'sass_imports', 'replace:scss_import_path', 'sass', 'postcss']);
     grunt.registerTask('build:js', ['jshint', 'browserify']);
     grunt.registerTask('imageMin', ['imagemin']);
 };

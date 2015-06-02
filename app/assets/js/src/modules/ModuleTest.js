@@ -16,8 +16,6 @@ module.exports = {
     addHtml: function () {
         var self = this;
 
-        console.log('test');
-
         self.el.html(Template({
             sentenceA: '<p>this is a test</p>',
             sentenceB: {

@@ -1,7 +1,8 @@
 module.exports = {
-    files: {
-        options: {
-            browsers: [
+    options: {
+        map: true,
+        processors: [
+            require('autoprefixer-core')({browsers: [
                 'last 2 version',
                 'safari 6',
                 'ie 9',
@@ -9,12 +10,11 @@ module.exports = {
                 'ios 6',
                 'android 4',
                 'Firefox ESR'
-            ],
-            map: true
-        },
-        expand: true,
-        flatten: true,
-        src: '<%= cssDest %>/*.css',
-        dest: '<%= cssDest %>'
+            ]}),
+            require('csswring')
+        ]
+    },
+    dist: {
+        src: '<%= cssDest %>/*.css'
     }
 };
