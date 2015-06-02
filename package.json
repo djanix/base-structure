@@ -31,9 +31,7 @@
     "watchify": "^3.2.1"
   },
   "dependencies": {
-    "jquery": "^1.11.3",
-    "ring": "^2.0.1",
-    "underscore": "^1.8.3"
+    "jquery": "^1.11.3"
   },
   "browser": {},
   "browserify-shim": "./shims.js",
