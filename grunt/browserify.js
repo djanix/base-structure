@@ -11,6 +11,7 @@ module.exports = {
             output: '<%= jsDest %>/boot.map'
         }]],
         transform: [
+            'babelify',
             'browserify-shim',
             'browserify-handlebars'
         ],

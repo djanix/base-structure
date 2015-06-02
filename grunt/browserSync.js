@@ -8,7 +8,7 @@ module.exports = {
             ]
         },
         options: {
-            //open: false,
+            open: false,
             //proxy: '<%= vhost %>',
             watchTask: true,
             server: {

@@ -1,23 +1,14 @@
-window._ = require('underscore');
 window.$ = require('jquery');
-window.ring = require('ring');
 
 require('handlebars');
 
-require('./App');
+var AppObj = require('./App');
 
-require('./modules/Module');
-require('./modules/ModuleTest');
-
-require('./views/View');
-require('./views/ViewHome');
+var ViewHome = require('./views/ViewHome');
 
 $(function () {
-    window.App = new $.App($('#site'));
-
-    // Modules
-    App.ModuleTest = new $.ModuleTest($('[data-module="Test"]'));
+    var App = Object.create(AppObj, {el: {value: $('#site')}}).init();
 
     // Views
-    App.ViewHome = new $.ViewHome($('[data-view="Home"]'));
+    var Home = Object.create(ViewHome, {el: {value: $('[data-view="Home"]')}}).init();
 });

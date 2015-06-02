@@ -1,16 +1,4 @@
-$.App = ring.create({
-    constructor: function (el) {
-        var self = this;
-        self.el = $(el);
-        self.init();
-    },
-
-    //-- Vars
-    //--------------------------------------------------------------
-
-
-    //-- Init
-    //--------------------------------------------------------------
+module.exports = {
     init: function () {
         var self = this;
 
@@ -19,6 +7,8 @@ $.App = ring.create({
         $(window).resize(function () {
             self.setDeviceType();
         });
+
+        return self;
     },
 
     setDeviceType: function () {
@@ -54,4 +44,4 @@ $.App = ring.create({
             window.deviceType = newDevice;
         }
     }
-});
+};

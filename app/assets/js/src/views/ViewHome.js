@@ -1,28 +1,27 @@
-$.ViewHome = ring.create([$.View], {
-    constructor: function (el) {
-        var self = this;
-        self.$super(el);
-    },
+var ModuleTest = require('../modules/ModuleTest');
+
+module.exports = {
+    el: null,
 
     //-- Vars
     //--------------------------------------------------------------
 
     //-- Init
     //--------------------------------------------------------------
-    initHook: function () {
+    init: function () {
         var self = this;
-        self.$super();
+        var Test = Object.create(ModuleTest, {el: {value: self.el.find('[data-module="Test"]')}}).init();
 
-        App.ModuleTest.addHtml();
+        Test.addHtml();
 
-        self.bindEventsHook();
+        self.bindEvents();
+
+        return self;
     },
 
     //-- Functions
     //--------------------------------------------------------------
-    bindEventsHook: function () {
+    bindEvents: function () {
         var self = this;
-    },
-
-    empty: null
-});
+    }
+};

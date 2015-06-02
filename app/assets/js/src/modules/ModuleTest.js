@@ -1,18 +1,22 @@
 var Template = require('../../../../partials/test.hbs');
 
-$.ModuleTest = ring.create([$.Module], {
-    constructor: function (el) {
-        var self = this;
-        self.$super(el);
-    },
+module.exports = {
+    el: null,
 
     //-- Vars
     //--------------------------------------------------------------
 
     // Functions
     //----------------------------------------------------------------
+    init: function () {
+        var self = this;
+        return self;
+    },
+
     addHtml: function () {
         var self = this;
+
+        console.log('test');
 
         self.el.html(Template({
             sentenceA: '<p>this is a test</p>',
@@ -20,7 +24,5 @@ $.ModuleTest = ring.create([$.Module], {
                 wordA: 'Word'
             }
         }));
-    },
-
-    empty: null
-});
+    }
+};

@@ -1,6 +1,6 @@
 module.exports = {
     options: {
-        sourceMap: './main.css.map'
+        sourceMap: true
     },
     dist: {
         files: {
