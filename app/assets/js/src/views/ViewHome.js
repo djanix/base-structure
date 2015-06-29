@@ -1,27 +1,22 @@
 var ModuleTest = require('../modules/ModuleTest');
 
 module.exports = {
-    el: null,
+    _el: null,
 
-    //-- Vars
-    //--------------------------------------------------------------
+    init: function ($el) {
+        var _this = this;
+        if (!$el.length) { return; }
+        _this._el = $el;
 
-    //-- Init
-    //--------------------------------------------------------------
-    init: function () {
-        var self = this;
-        var Test = Object.create(ModuleTest, {el: {value: self.el.find('[data-module="Test"]')}}).init();
-
+        var Test = Object.create(ModuleTest).init(_this._el.find('[data-module="Test"]'));
         Test.addHtml();
 
-        self.bindEvents();
+        _this.bindEvents();
 
-        return self;
+        return _this;
     },
 
-    //-- Functions
-    //--------------------------------------------------------------
     bindEvents: function () {
-        var self = this;
+        var _this = this;
     }
 };

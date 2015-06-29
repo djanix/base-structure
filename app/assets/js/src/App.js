@@ -1,14 +1,17 @@
 module.exports = {
-    init: function () {
-        var self = this;
+    _el: null,
 
-        self.setDeviceType();
+    init: function ($el) {
+        var _this = this;
+        _this._el = $el;
+
+        _this.setDeviceType();
 
         $(window).resize(function () {
-            self.setDeviceType();
+            _this.setDeviceType();
         });
 
-        return self;
+        return _this;
     },
 
     setDeviceType: function () {

@@ -1,22 +1,19 @@
 var Template = require('../../../../partials/test.hbs');
 
 module.exports = {
-    el: null,
+    _el: null,
 
-    //-- Vars
-    //--------------------------------------------------------------
-
-    // Functions
-    //----------------------------------------------------------------
-    init: function () {
-        var self = this;
-        return self;
+    init: function ($el) {
+        var _this = this;
+        if (!$el.length) { return; }
+        _this._el = $el;
+        return _this;
     },
 
     addHtml: function () {
-        var self = this;
+        var _this = this;
 
-        self.el.html(Template({
+        _this._el.html(Template({
             sentenceA: '<p>this is a test</p>',
             sentenceB: {
                 wordA: 'Word'
