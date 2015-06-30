@@ -41,7 +41,7 @@ module.exports = {
         }
 
         // IE9-10 REMOVE QUOTE FROM CONTENT STRING
-        newDevice = newDevice.replace(/"/g, '');
+        newDevice = newDevice.replace(/["']/g, '');
 
         if (newDevice != window.deviceType) {
             window.deviceType = newDevice;
