@@ -5,14 +5,12 @@ module.exports = {
 
     init: function ($el) {
         var _this = this;
-        if (!$el.length) { return; }
         _this._el = $el;
         return _this;
     },
 
     addHtml: function () {
         var _this = this;
-
         _this._el.html(Template({
             sentenceA: '<p>this is a test</p>',
             sentenceB: {

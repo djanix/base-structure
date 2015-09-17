@@ -4,10 +4,9 @@ module.exports = {
     init: function ($el) {
         var _this = this;
         _this._el = $el;
-
         _this.setDeviceType();
 
-        $(window).resize(function () {
+        $(window).on('resize', function () {
             _this.setDeviceType();
         });
 

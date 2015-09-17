@@ -24,9 +24,9 @@ grunt
 -------------------------
 ### using grunt to:
   - compile sass files
-  - minify css
+  - minify and auto prefix css
   - jshint
-  - auto prefix css3
+  - build js package via browserify
   - watch js/css files and recompile on the fly
 
 
@@ -52,31 +52,15 @@ grunt
 
 
 
-bower
--------------------------
-### using bower to install js plugins/dependencies
-
-    bower install [plugin name]
-
-
-
 JS
 -------------------------
-requirejs is used to add dependencies.
-boot.js add the requirejs configuration and the call the app.
-app.js load js files needed to run the app, and allow to load the right view and module files
 
 using data-view="ViewName" in the html will load the right js (js/src/views/View[ViewName].js)
-
-every views will extend View.js
-
-you can do the same thing with the modules ( data-module="ModuleName" ) ... it will extend Module.js
 
 you can create modules and then call them in a view this way:
 
     var ModuleTest = new $.ModuleTest();
-
-don't forget to add the dependency in the define at the top of the file.
+    
 
 *warning: use
 
@@ -102,8 +86,6 @@ SASS
 
 The only file added in the html is /app/assets/css/dest/main.css
 
-Every time you add a new scss file, you should add it to the main.scss
-
 Every file is concatened, minified, and all prefix are added with grunt. This way, no need to add -webkit, -moz, -o etc. Grunt will take care of it.
 
 The same structure as the js files apply. One folder for the views, and one folder for the modules.
@@ -124,6 +106,4 @@ variables and mixin should go in helpers/vars.scss
 Responsive
 -------------------------
 
-- optimize images for mobile vs desktop
-- calc mixin
 - css breakpoints / js breakpoint (window.deviceType)

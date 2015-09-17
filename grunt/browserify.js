@@ -12,8 +12,8 @@ module.exports = {
         }]],
         transform: [
             'babelify',
-            'browserify-shim',
-            'browserify-handlebars'
+            'browserify-handlebars',
+            'debowerify', 'decomponentify', 'deamdify', 'deglobalify'
         ],
         watch: true,
         browserifyOptions: {

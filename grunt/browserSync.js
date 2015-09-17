@@ -10,6 +10,7 @@ module.exports = {
         options: {
             open: false,
             //proxy: '<%= vhost %>',
+            port: '<%= port %>',
             watchTask: true,
             server: {
                 baseDir: '<%= basePath %>/'

@@ -16,7 +16,8 @@ module.exports = function (grunt) {
         jsSrc: '<%= basePath %>/assets/js/src',
         jsDest: '<%= basePath %>/assets/js/dest',
         pkg: grunt.file.readJSON('package.json'),
-        vhost: 'basestructure.local'
+        vhost: 'basestructure.local',
+        port: 3010
     };
 
     require('load-grunt-config')(grunt, {
@@ -28,8 +29,8 @@ module.exports = function (grunt) {
         }
     });
 
-    grunt.registerTask('default', ['build:css', 'build:js', 'browserSync', 'watch']);
-    grunt.registerTask('deploy', ['build:css', 'build:js', 'replace:cache_break']);
+    grunt.registerTask('default', ['deploy', 'watch']);
+    grunt.registerTask('deploy', ['build:css', 'build:js', 'browserSync', 'penthouse', 'replace:cache_break']);
 
     grunt.registerTask('build:css', ['sprite', 'sass_imports', 'replace:scss_import_path', 'sass', 'postcss']);
     grunt.registerTask('build:js', ['jshint', 'browserify']);

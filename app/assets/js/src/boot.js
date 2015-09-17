@@ -10,9 +10,9 @@ var ViewsObj = {
 
 $(function () {
     var App = Object.create(AppObj).init($('#site'));
-    var Views = {};
+    var $view = $('[data-view]');
 
-    $.each(ViewsObj, function (index, value) {
-        Views[index] = Object.create(value).init($(`[data-view="${index}"]`));
-    });
+    if (ViewsObj[$view.data('view')]) {
+        Object.create(ViewsObj[$view.data('view')]).init($view);
+    }
 });

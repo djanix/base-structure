@@ -8,31 +8,32 @@
     "url": "http://author.url"
   },
   "devDependencies": {
-    "autoprefixer-core": "^5.2.0",
-    "babelify": "^6.1.2",
-    "browserify": "^10.2.3",
+    "autoprefixer": "^6.0.2",
+    "babelify": "^6.3.0",
+    "browserify": "^11.1.0",
     "browserify-handlebars": "^1.0.0",
-    "browserify-shim": "^3.8.7",
-    "csswring": "^3.0.5",
+    "csswring": "^4.0.0",
+    "deamdify": "^0.1.1",
+    "debowerify": "^1.3.1",
+    "decomponentify": "^0.1.0",
+    "deglobalify": "^0.2.0",
     "grunt": "^0.4.5",
     "grunt-browser-sync": "^2.1.3",
-    "grunt-browserify": "^3.8.0",
+    "grunt-browserify": "^4.0.1",
     "grunt-contrib-imagemin": "^0.9.4",
-    "grunt-contrib-jshint": "^0.11.2",
+    "grunt-contrib-jshint": "^0.11.3",
     "grunt-contrib-watch": "^0.6.1",
-    "grunt-postcss": "^0.4.0",
+    "grunt-penthouse": "^0.2.1",
+    "grunt-postcss": "^0.6.0",
     "grunt-sass": "^1.0.0",
-    "grunt-scss-imports": "0.0.2",
+    "grunt-scss-imports": "^0.0.2",
     "grunt-spritesmith": "^4.7.0",
     "grunt-text-replace": "^0.4.0",
     "handlebars": "^3.0.3",
-    "load-grunt-config": "^0.17.1",
-    "minifyify": "^7.0.0"
+    "load-grunt-config": "^0.17.2",
+    "minifyify": "^7.0.6"
   },
   "dependencies": {
-    "jquery": "^1.11.3"
-  },
-  "browser": {},
-  "browserify-shim": "./shims.js",
-  "uglifyify": {}
+    "jquery": "^2.1.4"
+  }
 }

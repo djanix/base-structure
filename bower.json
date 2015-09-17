@@ -1,7 +1,0 @@
-{
-  "name": "base-structure",
-  "version": "0.9.1",
-  "dependencies": {
-    "modernizr": "~2.8.3"
-  }
-}
