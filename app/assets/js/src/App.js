@@ -44,6 +44,7 @@ module.exports = {
 
         if (newDevice != window.deviceType) {
             window.deviceType = newDevice;
+            $(document).trigger('deviceChange', [newDevice]);
         }
     }
 };

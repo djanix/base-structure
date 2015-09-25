@@ -13,6 +13,10 @@ module.exports = {
     },
 
     bindEvents: function () {
+        var _this = this;
 
+        $(document).on('deviceChange', function (e, device) {
+            console.log(device);
+        });
     }
 };
