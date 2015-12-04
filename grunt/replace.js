@@ -18,12 +18,8 @@ module.exports = {
                 to: 'cacheBreak: "<%= cacheBreaker %>"'
             },
             {
-                from: /\.css.*/g,
-                to: '.css?v=<%= cacheBreaker %>"/>'
-            },
-            {
-                from: /\.js.*?"/g,
-                to: '.js?v=<%= cacheBreaker %>"'
+                from: /\?v=\w+/g,
+                to: '?v=<%= cacheBreaker %>'
             }
         ]
     }
