@@ -8,7 +8,7 @@ module.exports = function (grunt) {
                 '<%= pkg.author.name %> - <%= pkg.author.url %>\n' +
                 'Copyright (c) <%= grunt.template.today("yyyy-mm-dd") %>',
         basePath: 'app',
-        cacheBreaker: '<%= ((new Date()).valueOf().toString()) + (Math.floor((Math.random()*1000000)+1).toString()) %>',
+        cacheBreaker: (new Date()).valueOf().toString(36),
         cssSrc: '<%= basePath %>/assets/css/src',
         cssDest: '<%= basePath %>/assets/css/dest',
         htmlFileExtension: 'html',
